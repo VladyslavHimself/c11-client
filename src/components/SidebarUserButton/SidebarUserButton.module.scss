@@ -1,0 +1,42 @@
+.sidebar-user-button {
+    width: 100%;
+    height: 80px;
+
+    background-color: #101010;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+
+    cursor: pointer;
+    transition: .3s;
+    &:hover {
+        background-color: #070707;
+    }
+
+    &:active {
+        background-color: #1a1a1a;
+    }
+}
+
+.sidebar-user-button-info {
+    margin-right: 15px;
+    & > div {
+        font-size: 16px;
+        line-height: 32px;
+    }
+    & > div + span {
+
+        float: left;
+        font-size: 14px;
+        color: #808080;
+    }
+}
+
+.sidebar-user-button-more {
+    svg {
+        width: 18px;
+        color: #5c5c5c;
+    }
+}

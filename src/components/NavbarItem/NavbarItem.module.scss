@@ -1,0 +1,38 @@
+.navbar-item {
+    border-radius: 18px;
+
+    width: 100%;
+    height: 56px;
+
+    display: flex;
+    padding: 16px;
+
+    cursor: pointer;
+
+    &.is-active {
+        background-color: #202020;
+    }
+
+    &:not(.is-active) {
+        transition: .2s;
+        &:hover {
+            background-color: #020202;
+        }
+
+        &:active {
+            transition: 0s linear;
+            background-color: #1a1a1a;
+        }
+    }
+
+    &:not(:first-child) {
+        margin-top: 8px;
+    }
+
+    svg {
+        width: 25px;
+        height: 25px;
+    }
+
+    svg + span { margin-left: 5px; line-height: 25px}
+}

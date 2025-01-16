@@ -1,0 +1,21 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 100vh;
+  background-color: #000;
+  justify-content: space-between;
+  padding: 18px;
+  color: #fff;
+}
+
+.logotype {
+  width: 100%;
+}
+
+.separator {
+  margin-top: 16px;
+
+  border-radius: 1px;
+  border-color: #202020;
+}
