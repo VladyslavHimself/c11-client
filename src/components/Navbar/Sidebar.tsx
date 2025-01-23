@@ -9,7 +9,7 @@ export default async function Sidebar() {
     return (
         <div className={styles.sidebar}>
             <div>
-                <SidebarUserButton user={JSON.parse(user)} />
+                <SidebarUserButton user={user} />
                 <hr className={styles.separator} />
                 <Navbar />
             </div>

@@ -14,7 +14,7 @@ export const authConfig: AuthOptions = {
                 const { status, data } = await AuthAPI.loginUser({
                     email: credentials!.email,
                     password: credentials!.password
-                });
+                }).then(res => res);
 
                 if (status === 201 && data) return data;
                 return null;

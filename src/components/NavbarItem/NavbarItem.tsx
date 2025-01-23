@@ -1,13 +1,12 @@
 import styles from './NavbarItem.module.scss';
-import React, {SVGProps} from "react";
+import React, {ReactNode, SVGProps} from "react";
 import Link from "next/link";
 type Props = {
-    Icon: (props: SVGProps<SVGSVGElement>) => Element;
+    Icon: (props: SVGProps<SVGSVGElement>) => ReactNode;
     value: string;
     isActive: boolean;
     link: string;
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-    action: Function;
+    action: React.MouseEventHandler<HTMLAnchorElement>;
 }
 
 export default function NavbarItem({ Icon, value, link, action, isActive }: Props) {

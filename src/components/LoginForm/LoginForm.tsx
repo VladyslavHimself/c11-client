@@ -2,7 +2,7 @@
 
 
 import {z} from "zod";
-import {signIn, signOut, useSession} from "next-auth/react";
+import {signIn, signOut} from "next-auth/react";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
@@ -21,18 +21,21 @@ const loginFormSchema = z.object({
 export function LoginForm() {
     const form = useForm<z.infer<typeof loginFormSchema>>({
         resolver: zodResolver(loginFormSchema),
+        defaultValues: {
+            email: "",
+            password: "",
+        }
     });
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit((values: z.infer<typeof loginFormSchema>) => {
-                return signIn("credentials", {
+            <form onSubmit={form.handleSubmit(async (values: z.infer<typeof loginFormSchema>) => {
+                await signIn("credentials", {
                     redirect: false,
                     email: values.email,
                     password: values.password,
-                }).then(() => {
-                    location.reload();
                 });
+                location.reload();
             })}>
                 <FormField
                     control={form.control}
