@@ -5,11 +5,11 @@ import LogotypeIcon from "../../../public/LogotypeIcon";
 import {UsersAPI} from "@/api/Users";
 
 export default async function Sidebar() {
-    // const user = await UsersAPI.getUser();
+    const user = await UsersAPI.getUser();
     return (
         <div className={styles.sidebar}>
             <div>
-                {/*<SidebarUserButton user={JSON.parse(user)} />*/}
+                <SidebarUserButton user={JSON.parse(user)} />
                 <hr className={styles.separator} />
                 <Navbar />
             </div>
