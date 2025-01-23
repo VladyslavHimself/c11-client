@@ -1,8 +1,11 @@
 import {LoginForm} from "@/components/LoginForm/LoginForm";
-export default function Home() {
+import {api} from "@/api";
+export default async function Home() {
+    const user = await api.get("/api/users/profile").then(({ data }) => data)
     return (
       <>
-          {/*<LoginForm />*/}
+          <LoginForm />
+          <h1 style={{color: 'white'}}>asdfsd: {JSON.parse(user).email}</h1>
       </>
   );
 }

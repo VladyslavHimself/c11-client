@@ -2,7 +2,7 @@
 
 
 import {z} from "zod";
-import {signIn, signOut} from "next-auth/react";
+import {signIn, signOut, useSession} from "next-auth/react";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
@@ -25,11 +25,15 @@ export function LoginForm() {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit((values: z.infer<typeof loginFormSchema>) => signIn("credentials",{
-                redirect: false,
-                email: values.email,
-                password: values.password,
-            }))}>
+            <form onSubmit={form.handleSubmit((values: z.infer<typeof loginFormSchema>) => {
+                return signIn("credentials", {
+                    redirect: false,
+                    email: values.email,
+                    password: values.password,
+                }).then(() => {
+                    location.reload();
+                });
+            })}>
                 <FormField
                     control={form.control}
                     name="email"
@@ -63,4 +67,4 @@ export function LoginForm() {
             <Button onClick={() => signOut()}>Sign out</Button>
         </Form>
     );
-};
+}

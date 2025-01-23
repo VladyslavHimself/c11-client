@@ -8,7 +8,7 @@ export type LoginBody = {
 }
 
 export const AuthAPI = {
-    loginUser(loginBody: LoginBody) {
+    async loginUser(loginBody: LoginBody) {
         return axios.post(`${BASE_URL}/api/auth/sign-in`, loginBody);
     }
 }

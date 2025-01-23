@@ -1,15 +1,15 @@
-'use client'
-
 import styles from './sidebar.module.scss';
 import SidebarUserButton from "@/components/SidebarUserButton/SidebarUserButton";
 import Navbar from "@/components/Navbar/Navbar";
 import LogotypeIcon from "../../../public/LogotypeIcon";
+import {UsersAPI} from "@/api/Users";
 
-export default function Sidebar() {
+export default async function Sidebar() {
+    // const user = await UsersAPI.getUser();
     return (
         <div className={styles.sidebar}>
             <div>
-                <SidebarUserButton />
+                {/*<SidebarUserButton user={JSON.parse(user)} />*/}
                 <hr className={styles.separator} />
                 <Navbar />
             </div>
@@ -17,6 +17,3 @@ export default function Sidebar() {
         </div>
     );
 };
-
-// {!session && <p>Not signed in!</p>}
-// {session && <button onClick={() => signOut()}>Sign out</button>}

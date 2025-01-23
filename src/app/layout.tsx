@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Poppins } from 'next/font/google';
 import "./globals.css";
-import {getServerSession} from "next-auth";
-import SessionProvider from "@/components/SessionProvider";
 import Providers from "@/Providers";
+import styles from "@/application.module.scss";
+import Sidebar from "@/components/Navbar/Sidebar";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,17 +22,18 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await getServerSession()
 
   return (
     <html lang="en">
       <body
         className={`${poppins.variable} antialiased`}
       >
-      <SessionProvider session={session}>
-          <Providers>{children}</Providers>
-      </SessionProvider>
-
+          <Providers>
+              <div className={styles['application-wrapper']}>
+                  <Sidebar />
+                  {children}
+              </div>
+          </Providers>
       </body>
     </html>
   );

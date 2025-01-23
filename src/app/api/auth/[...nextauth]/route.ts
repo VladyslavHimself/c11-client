@@ -1,26 +1,6 @@
 import NextAuth from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
-import {AuthAPI} from "@/api/auth";
+import {authConfig} from "@/config/authConfig";
 
-export const authOptions = {
-    providers: [
-        CredentialsProvider({
-            name: "Custom credentials",
-            credentials: {
-                email: { label: "Email", type: "text"},
-                password: { label: "Password", type: "password"}
-            },
-            async authorize(credentials) {
-                const { status, data } = await AuthAPI.loginUser({ email: credentials!.email, password: credentials!.password});
+const handler = NextAuth(authConfig);
 
-                if (status === 201 && data) return data;
-                return null;
-            },
-            secret: process.env.NEXTAUTH_SECRET,
-        })
-    ]
-}
-
-export const handler = NextAuth(authOptions);
-
-export { handler as GET, handler as POST};
+export { handler as GET, handler as POST };

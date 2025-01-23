@@ -6,9 +6,6 @@ export default function useSignIn() {
         mutationKey: ['user-signIn'],
         mutationFn: function (credentials: LoginBody) {
             return AuthAPI.loginUser(credentials).then(({ data }) => data);
-        },
-        onSuccess: (data) => {
-            console.log(data);
         }
     });
 

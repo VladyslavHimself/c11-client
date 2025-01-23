@@ -18,6 +18,15 @@
     &:active {
         background-color: #1a1a1a;
     }
+
+
+    .sidebar-user-data {
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+    }
 }
 
 .sidebar-user-button-info {
