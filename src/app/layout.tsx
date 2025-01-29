@@ -19,8 +19,10 @@ const poppins = Poppins({
 
 export default function RootLayout({
   children,
+  modal
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
 
   return (
@@ -30,6 +32,7 @@ export default function RootLayout({
       >
           <Providers>
               <div className={styles['application-wrapper']}>
+                  {modal}
                   <Sidebar />
                   {children}
               </div>

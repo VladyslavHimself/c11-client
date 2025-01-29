@@ -1,5 +1,5 @@
 'use client'
-import styles from './Navbar.module.scss';
+import styles from './navbar.module.scss';
 import NavbarItem from "@/components/NavbarItem/NavbarItem";
 import HomeIcon from "../../../public/HomeIcon";
 import StarsIcon from "../../../public/StarsIcon";

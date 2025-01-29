@@ -1,0 +1,18 @@
+.separator {
+    width: 100%;
+    display: flex;
+
+    align-items: center;
+    padding-top: 20px;
+
+    hr {
+        width: 100%;
+        border-color: #262626;
+    }
+
+    span {
+        color: #9f9f9f;
+        padding: 0 16px;
+        font-size: 18px;
+    }
+}

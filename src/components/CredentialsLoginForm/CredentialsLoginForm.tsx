@@ -2,12 +2,14 @@
 
 
 import {z} from "zod";
-import {signIn, signOut} from "next-auth/react";
-import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
+import {signIn} from "next-auth/react";
+import {Form, FormControl, FormField, FormItem} from "@/components/ui/form";
 import {Input} from "@/components/ui/input";
-import {Button} from "@/components/ui/button";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
+
+import styles from './credentialsLoginForm.module.scss';
+import {Button} from "@/components/ui/button";
 
 const loginFormSchema = z.object({
     email: z.string().min(2, {
@@ -18,7 +20,7 @@ const loginFormSchema = z.object({
     }),
 })
 
-export function LoginForm() {
+export function CredentialsLoginForm() {
     const form = useForm<z.infer<typeof loginFormSchema>>({
         resolver: zodResolver(loginFormSchema),
         defaultValues: {
@@ -35,18 +37,16 @@ export function LoginForm() {
                     email: values.email,
                     password: values.password,
                 });
-                location.reload();
+                window.location.replace("/");
             })}>
                 <FormField
                     control={form.control}
                     name="email"
                     render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Email</FormLabel>
+                        <FormItem className={styles['signin-form-input-field']}>
                             <FormControl>
-                                <Input placeholder="email" {...field} />
+                                <Input placeholder="E-mail" {...field} />
                             </FormControl>
-                            <FormMessage />
                         </FormItem>
                     )}
                 />
@@ -55,19 +55,16 @@ export function LoginForm() {
                     control={form.control}
                     name="password"
                     render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Email</FormLabel>
+                        <FormItem className={styles['signin-form-input-field']}>
                             <FormControl>
-                                <Input placeholder="password" {...field} />
+                                <Input type="password" placeholder="Password" {...field} />
                             </FormControl>
-                            <FormMessage />
                         </FormItem>
                     )}
                 />
-                <Button type="submit">Login</Button>
-            </form>
 
-            <Button onClick={() => signOut()}>Sign out</Button>
+                <Button className="w-full mt-6" size="lg" variant="accent" type="submit">Sign In</Button>
+            </form>
         </Form>
     );
 }

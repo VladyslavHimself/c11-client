@@ -1,4 +1,4 @@
-import styles from './NavbarItem.module.scss';
+import styles from './navbarItem.module.scss';
 import React, {ReactNode, SVGProps} from "react";
 import Link from "next/link";
 type Props = {
