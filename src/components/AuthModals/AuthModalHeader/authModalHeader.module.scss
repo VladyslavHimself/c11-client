@@ -1,0 +1,30 @@
+.auth-modal-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    svg {
+        width: 80px;
+        height: 45px;
+    }
+}
+
+.auth-modal-subheader {
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    flex-direction: column;
+
+    h2 {
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+    p {
+        font-size: 18px;
+        color: #808080;
+    }
+}

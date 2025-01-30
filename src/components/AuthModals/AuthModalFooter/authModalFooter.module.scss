@@ -1,0 +1,15 @@
+.auth-modal-footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+
+    p {
+        color: #808080;
+        span {
+            cursor: pointer;
+            color: #fff;
+        }
+    }
+}

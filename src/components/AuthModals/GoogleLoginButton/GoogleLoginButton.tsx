@@ -1,5 +1,5 @@
 import styles from './googleLoginButton.module.scss';
-import GoogleIcon from "../../../public/GoogleIcon";
+import GoogleIcon from "../../../../public/GoogleIcon";
 
 
 export default function GoogleLoginButton() {

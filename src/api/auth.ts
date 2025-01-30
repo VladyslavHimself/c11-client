@@ -7,8 +7,19 @@ export type LoginBody = {
     password: string,
 }
 
+export type RegisterBody = {
+    name: string,
+    surname: string,
+    email: string,
+    password: string,
+}
+
 export const AuthAPI = {
     async loginUser(loginBody: LoginBody) {
         return axios.post(`${BASE_URL}/api/auth/sign-in`, loginBody);
+    },
+
+    async registerUser(credentials: RegisterBody ) {
+        return axios.post(`${BASE_URL}/api/auth/sign-up`, credentials);
     }
 }
