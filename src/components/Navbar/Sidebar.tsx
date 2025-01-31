@@ -16,4 +16,4 @@ export default async function Sidebar() {
             <LogotypeIcon className={styles.logotype} />
         </div>
     );
-};
+}

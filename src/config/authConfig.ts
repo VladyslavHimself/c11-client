@@ -24,13 +24,15 @@ export const authConfig: AuthOptions = {
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID!,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+
         })
     ],
     session: { strategy: "jwt" },
     secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
         async jwt({ account, token, user}) {
-            if (user && !account?.provider) {
+            console.log('lohi', account, user);
+            if (user && account?.provider === 'credentials') {
                 token.id = user.accessToken;
                 token.refresh = user.refreshToken
             }
@@ -42,6 +44,7 @@ export const authConfig: AuthOptions = {
                 token.refresh = refreshToken;
             }
 
+            console.log('jwt', token);
             return {...token };
         },
         async session({ session, token }) {
@@ -51,6 +54,8 @@ export const authConfig: AuthOptions = {
                 // TODO: Optional. Add user data, if backend will pass data.
                 session.user = {};
             }
+
+            console.log('session', session);
             return session;
         },
     },

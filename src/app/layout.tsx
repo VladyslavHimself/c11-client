@@ -3,7 +3,6 @@ import { Poppins } from 'next/font/google';
 import "./globals.css";
 import Providers from "@/Providers";
 import styles from "@/application.module.scss";
-import Sidebar from "@/components/Navbar/Sidebar";
 import React from "react";
 
 export const metadata: Metadata = {
@@ -17,14 +16,13 @@ const poppins = Poppins({
     weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-  modal
+  modal,
 }: Readonly<{
   children: React.ReactNode;
   modal: React.ReactNode;
 }>) {
-
   return (
     <html lang="en">
       <body
@@ -33,7 +31,6 @@ export default function RootLayout({
           <Providers>
               <div className={styles['application-wrapper']}>
                   {modal}
-                  <Sidebar />
                   {children}
               </div>
           </Providers>
