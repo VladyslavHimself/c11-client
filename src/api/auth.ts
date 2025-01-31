@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
 
 const BASE_URL = 'http://localhost:8000';
 
@@ -14,6 +14,11 @@ export type RegisterBody = {
     password: string,
 }
 
+export type JWTResponse = {
+    accessToken: string;
+    refreshToken: string;
+}
+
 export const AuthAPI = {
     async loginUser(loginBody: LoginBody) {
         return axios.post(`${BASE_URL}/api/auth/sign-in`, loginBody);
@@ -21,5 +26,9 @@ export const AuthAPI = {
 
     async registerUser(credentials: RegisterBody ) {
         return axios.post(`${BASE_URL}/api/auth/sign-up`, credentials);
+    },
+
+    async loginUserViaGoogle(accessToken: string): Promise<AxiosResponse<JWTResponse>> {
+        return axios.post(`${BASE_URL}/api/auth/sign-in/by/google`, { token: accessToken });
     }
 }
