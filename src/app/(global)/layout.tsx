@@ -10,11 +10,8 @@ export default function GlobalLayout({
 }>) {
     return (
         <>
-            <Providers>
-                {navigation}
-                {children}
-            </Providers>
-
+            {navigation}
+            {children}
         </>
     );
 }

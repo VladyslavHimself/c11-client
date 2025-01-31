@@ -2,10 +2,13 @@ import styles from './sidebar.module.scss';
 import SidebarUserButton from "@/components/SidebarUserButton/SidebarUserButton";
 import Navbar from "@/components/Navbar/Navbar";
 import LogotypeIcon from "../../../public/LogotypeIcon";
-import {UsersAPI} from "@/api/Users";
+import {UserResponse} from "@/api/Users";
 
-export default async function Sidebar() {
-    const user = await UsersAPI.getUser();
+type Props = {
+    user: UserResponse
+}
+
+export default async function Sidebar({ user }: Props) {
     return (
         <div className={styles.sidebar}>
             <div>

@@ -13,7 +13,7 @@ export type UserResponse = {
 }
 
 export const UsersAPI = {
-    getUser() {
+    getUser(): Promise<UserResponse> {
         return api.get("/api/users/profile").then(({ data }: { data: UserResponse}) => data).catch(err => {
             if (err.status === 401) return null;
             return err;

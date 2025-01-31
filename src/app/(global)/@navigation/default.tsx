@@ -1,4 +1,4 @@
-import {UsersAPI} from "@/api/Users";
+import { UsersAPI } from "@/api/Users";
 import Sidebar from "@/components/Navbar/Sidebar";
 
 export default async function NavigationDefaultPage() {
