@@ -31,7 +31,6 @@ export const authConfig: AuthOptions = {
     secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
         async jwt({ account, token, user}) {
-            console.log('lohi', account, user);
             if (user && account?.provider === 'credentials') {
                 token.id = user.accessToken;
                 token.refresh = user.refreshToken
@@ -44,7 +43,6 @@ export const authConfig: AuthOptions = {
                 token.refresh = refreshToken;
             }
 
-            console.log('jwt', token);
             return {...token };
         },
         async session({ session, token }) {
@@ -55,7 +53,6 @@ export const authConfig: AuthOptions = {
                 session.user = {};
             }
 
-            console.log('session', session);
             return session;
         },
     },
