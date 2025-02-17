@@ -1,0 +1,22 @@
+.slidebar {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-around;
+  opacity: .1;
+
+  .slidebar-strip {
+    animation: scroll infinite 15s linear;
+    margin-left: 25px;
+
+    &.slidebar-strip-reversed {
+      animation: scroll infinite 15s linear reverse;
+    }
+  }
+}
+
+@keyframes scroll {
+  to {
+    transform: translateY(-1400px);
+  }
+}
