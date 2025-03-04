@@ -1,0 +1,22 @@
+.header {
+    width: 100%;
+    height: 110px;
+    display: flex;
+    align-items: center;
+
+    button { margin-bottom: 5px; }
+
+    .header-searchbar {
+        position: relative;
+        width: 500px;
+        padding-right: 15px;
+
+        > input { padding-left: 40px; }
+        > svg {
+            position: absolute;
+            top: 50%;
+            left: 3%;
+            transform: translate(-3%, -50%);
+        }
+    }
+}
