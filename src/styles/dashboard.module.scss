@@ -1,3 +1,8 @@
 .dashboard {
   padding: 8px;
+
+
+  .dashboard-section:not(:first-child) {
+    margin-top: 25px;
+  }
 }

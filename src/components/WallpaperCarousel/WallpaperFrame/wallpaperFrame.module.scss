@@ -1,0 +1,68 @@
+.wallpaper-frame {
+    position: relative;
+    width: 350px;
+    height: 200px;
+    border: 1px solid #FFFFFF19;
+    border-radius: 16px;
+
+    cursor: pointer;
+
+    img { border-radius: inherit; }
+
+    .wallpaper-frame-menu {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        backdrop-filter: blur(3px) brightness(50%);
+        width: 100%;
+        height: 100%;
+        z-index: 20;
+        visibility: hidden;
+        opacity: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        transition: .4s ease;
+
+        padding: 8px;
+
+        .wallpaper-frame-strip {
+            display: flex;
+            width: 100%;
+            height: 40px;
+
+            justify-content: space-between;
+        }
+
+        .wallpaper-information {
+            width: fit-content;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            background-color: rgba(0,0,0, .75);
+            color: white;
+            padding: 8px 17px;
+            border-radius: 8px;
+            display: flex;
+            gap: 5px;
+        }
+
+        .wallpaper-frame-strip-divider {
+            display: flex;
+        }
+    }
+
+
+    &:not(:first-child) {
+        margin-left: 15px;
+    }
+
+    &:hover {
+        .wallpaper-frame-menu {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+}
