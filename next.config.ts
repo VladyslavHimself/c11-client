@@ -7,6 +7,11 @@ const nextConfig: NextConfig = {
                 protocol: 'https',
                 hostname: 's3.dframe.cloud',
             },
+
+            {
+                protocol: 'https',
+                hostname: 'i.pinimg.com',
+            },
         ],
     },
 };

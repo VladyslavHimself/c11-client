@@ -1,0 +1,12 @@
+.popular-topics-board {
+    width: 1130px;
+    display: flex;
+
+    // TODO: Investigate how to make this easier
+    :global(.topic-frame) {
+        &:not(:first-child) {
+            margin-left: 25px;
+        }
+    }
+}
+
