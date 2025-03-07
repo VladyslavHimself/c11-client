@@ -7,6 +7,22 @@
     overflow: hidden;
     position: relative;
 
+
+    .prev-button-placement {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 999;
+    }
+
+    .next-button-placement {
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        transform: translate(-100%, -50%);
+        z-index: 999;
+    }
+
     .wallpaper-carousel-wrapper {
         position: relative;
         display: flex;
