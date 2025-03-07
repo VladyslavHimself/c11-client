@@ -9,7 +9,7 @@ type Props = {
 export default function CarouselNavigationButton({ children, action, isHidden}: PropsWithChildren<Props> ) {
     return (
         <button
-            data-isHidden={isHidden}
+            data-ishidden={isHidden}
             className={styles['carousel-navigation-button']}
             onClick={action}
         >

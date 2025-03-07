@@ -12,7 +12,7 @@
     visibility: visible;
     transition: .2s ease;
 
-    &[data-isHidden="true"] {
+    &[data-ishidden="true"] {
         opacity: 0;
         visibility: hidden;
     }
