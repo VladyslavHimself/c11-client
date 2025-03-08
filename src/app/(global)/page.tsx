@@ -41,7 +41,7 @@ export default async function Home() {
     const wallpapers = await ImagesAPI.getAllWallpapers();
 
     return (
-      <div style={{height:'100%', flex: '1 1 100%'}}>
+      <div style={{height:'100vh', flex: '1 1 100%', overflow: 'auto'}}>
           <HeaderSearchbar />
           <div className={styles['dashboard']}>
               <div className={styles['dashboard-section']}>

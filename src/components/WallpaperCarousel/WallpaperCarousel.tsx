@@ -14,8 +14,8 @@ type Props = {
     wallpapers: WallpaperResponse[]
 };
 
-const TRANSFORM_STEP = 395 * 3;
-const CAROUSEL_LIMIT = 2;
+const TRANSFORM_STEP = 355 * 3;
+const CAROUSEL_LIMIT = 3;
 
 export default function WallpaperCarousel({ wallpapers }: Props) {
     const [carouselIndex, listForward, listBackward] = useCarousel(CAROUSEL_LIMIT);
