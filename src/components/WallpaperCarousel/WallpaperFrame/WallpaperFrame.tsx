@@ -57,7 +57,14 @@ export default function WallpaperFrame({ wallpaper }: Props) {
                     </Button>
                 </div>
             </div>
-            <Image src={wallpaper.url + 'h=512'} alt={wallpaper.filename} objectFit="cover" fill />
+            <Image
+                src={wallpaper.url + 'h=512'}
+                alt={wallpaper.filename}
+                blurDataURL={wallpaper.placeholder}
+                placeholder="blur"
+                objectFit="cover"
+                fill
+            />
         </div>
     );
 };
