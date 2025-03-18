@@ -8,14 +8,18 @@ import LikeIcon from "../../../../public/LikeIcon";
 import ResolutionIcon from "../../../../public/ResolutionIcon";
 import DownloadIcon from "../../../../public/DownloadIcon";
 import styles from './wallpaperFrame.module.scss';
+import {useRouter} from "next/navigation";
 
 type Props = {
     wallpaper: WallpaperResponse
 }
 
 export default function WallpaperFrame({ wallpaper }: Props) {
+    const router = useRouter();
     return (
-        <div className={styles['wallpaper-frame']} onClick={() => console.log('open wallpaper')}>
+        <div className={styles['wallpaper-frame']} onClick={() => {
+            router.push(`/w/${wallpaper.id}`);
+        }}>
             <div className={styles['wallpaper-frame-menu']}>
                 <div className={styles['wallpaper-frame-strip']}>
                     <Button onClick={e => {
