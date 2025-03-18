@@ -1,0 +1,22 @@
+.wallpaper-viewer-image-info-table-row {
+    display: flex;
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+
+    &:nth-child(even) { background-color: #1A1A1A; }
+
+    .wallpaper-viewer-image-info-table-row-title,
+    .wallpaper-viewer-image-info-table-row-value {
+        display: flex;
+        align-items: center;
+        padding: 8px;
+    }
+
+    .wallpaper-viewer-image-info-table-row-value { width: 100%; }
+
+    .wallpaper-viewer-image-info-table-row-title {
+        width: 120px;
+        border-right: 1px solid #252525;
+        justify-content: flex-end;
+    }
+}

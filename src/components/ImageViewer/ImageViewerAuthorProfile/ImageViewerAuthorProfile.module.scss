@@ -1,0 +1,24 @@
+.image-viewer-author-profile {
+    width: 196px;
+    height: 80px;
+    background-color: #101010;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+
+    .image-viewer-author-profile-initials {
+        width: 115px;
+        font-family: 'Poppins', sans-serif;
+        div:first-child {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        div:last-child {
+            color: #808080;
+            font-size: 14px;
+        }
+    }
+}

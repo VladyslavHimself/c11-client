@@ -1,0 +1,51 @@
+.wallpaper-viewer-image-info-table-tags {
+    display: flex;
+    width: 100%;
+    height: 100px; // TODO: autofit size later
+
+    background-color: #1A1A1A;
+
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+
+    .wallpaper-viewer-image-info-table-tags-title,
+    .wallpaper-viewer-image-info-table-tags-values {
+        display: flex;
+        padding: 8px;
+    }
+
+    .wallpaper-viewer-image-info-table-tags-title {
+        width: 120px;
+        border-right: 1px solid #252525;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .wallpaper-viewer-image-info-table-tags-values {
+        flex: 1 1 100%;
+        flex-wrap: wrap;
+
+        padding: 8px;
+        overflow: auto;
+    }
+
+    .wallpaper-viewer-image-info-table-tag {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        max-width: 170px;
+        height: 30px;
+
+        padding: 12px;
+        border-radius: 12px;
+        margin-right: 5px;
+        margin-top: 5px;
+        background-color: rgba(59, 27, 71, 0.56);
+
+        > span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+}
