@@ -18,7 +18,7 @@ export default async function InterceptedWallpaperView({ params }: Props) {
     const wallpaper = wallpapers.find(({ id }) => id === wallpaperId);
     return (
         <ModalLayout modalName={styles['wallpaper-viewer']}>
-            <ImageViewer wallpaper={wallpaper!} />
+            <ImageViewer wallpaper={wallpaper!} wallpapers={wallpapers} />
         </ModalLayout>
     )
 }

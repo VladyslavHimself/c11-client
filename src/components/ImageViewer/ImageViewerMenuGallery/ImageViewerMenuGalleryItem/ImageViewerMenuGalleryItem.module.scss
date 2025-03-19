@@ -1,0 +1,26 @@
+.image-viewer-menu-gallery-item {
+    position: relative;
+    min-width: 220px;
+    height: 135px;
+
+    z-index: 0;
+
+    border: 1px solid #FFFFFF19;
+    background-color: #161616;
+    border-radius: 16px;
+
+    margin-right: 20px;
+
+    cursor: pointer;
+
+    img { border-radius: inherit; }
+
+    .image-viewer-menu-gallery-item-shadows {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 100;
+        box-shadow: inset 0 4px 24px rgba(0, 0, 0, .8);
+        border-radius: inherit;
+    }
+}

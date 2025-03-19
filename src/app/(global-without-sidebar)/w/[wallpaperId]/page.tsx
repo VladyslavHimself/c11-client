@@ -18,7 +18,7 @@ export default async function WallpaperPreviewPage({ params }: Props) {
 
     return (
         <div className={styles['wallpaper-viewer-page-container']}>
-            <ImageViewer wallpaper={wallpaper!} />
+            <ImageViewer wallpaper={wallpaper!} wallpapers={wallpapers} />
             <Image className={styles['wallpaper-viewer-page-background-image']} src={wallpaper?.url + 'h=128'} fill alt={''} />
         </div>
     );

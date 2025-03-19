@@ -6,12 +6,16 @@ import DownloadIcon from "../../../public/DownloadIcon";
 import ImageViewerActionsBar from "@/components/ImageViewer/ImageViewerActionsBar/ImageViewerActionsBar";
 import ImageViewerAuthorProfile from "@/components/ImageViewer/ImageViewerAuthorProfile/ImageViewerAuthorProfile";
 import ImageViewerInfoTable from "@/components/ImageViewer/ImageViewerInfoTable/ImageViewerInfoTable";
+import ImageViewerMenuGallery from "@/components/ImageViewer/ImageViewerMenuGallery/ImageViewerMenuGallery";
 
+
+// TODO: Replace "wallpapers" to topic-related wallpapers soon
 type Props = {
     wallpaper: WallpaperResponse
+    wallpapers: WallpaperResponse[]
 }
 
-export default function ImageViewer({ wallpaper }: Props) {
+export default function ImageViewer({ wallpaper, wallpapers }: Props) {
     return (
         <div className={styles['wallpaper-viewer-container']}>
             <div className={styles['wallpaper-view']}>
@@ -33,8 +37,7 @@ export default function ImageViewer({ wallpaper }: Props) {
                     </div>
                     <ImageViewerInfoTable />
                 </div>
-
-                <div className={styles['wallpaper-viewer-menu-gallery']}></div>
+                <ImageViewerMenuGallery suggestedWallpapers={wallpapers} />
             </div>
         </div>
     );
