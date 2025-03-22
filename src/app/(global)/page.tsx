@@ -38,7 +38,7 @@ const mockedTopicsData = [
 ]
 
 export default async function Home() {
-    const wallpapers = await ImagesAPI.getAllWallpapers();
+    const wallpapers = await ImagesAPI.getPopularImages();
 
     return (
       <div style={{height:'100vh', flex: '1 1 100%', overflow: 'auto'}}>

@@ -1,5 +1,7 @@
 import {api} from "@/api";
 
+const POPULAR_IMAGES_COUNT = 12;
+
 export type WallpaperResponse = {
     id: string
     name: string
@@ -24,8 +26,15 @@ export type WallpaperResponse = {
 
 
 export const ImagesAPI = {
-    getAllWallpapers(): Promise<WallpaperResponse[]> {
-        return api.get("/api/images").then(({ data }: { data: WallpaperResponse[]}) => data).catch(err => {
+    getPopularImages() {
+        return api.get(`/api/v1/images/popular?count=${POPULAR_IMAGES_COUNT}`).then(({ data }: { data: WallpaperResponse[] }) => data).catch(err => {
+            if (err.status === 401) return null;
+            return err;
+        });
+    },
+
+    getImageById(id: string) {
+        return api.get(`/api/v1/images/${id}`).then(({ data }: { data: WallpaperResponse }) => data).catch(err => {
             if (err.status === 401) return null;
             return err;
         });

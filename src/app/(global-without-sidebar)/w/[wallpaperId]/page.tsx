@@ -13,12 +13,14 @@ type Props = {
 
 export default async function WallpaperPreviewPage({ params }: Props) {
     const { wallpaperId } = await params;
-    const wallpapers = await ImagesAPI.getAllWallpapers();
-    const wallpaper = wallpapers.find(({ id }) => id === wallpaperId);
 
+    // TODO: Change, when topic-related images will be ready
+    const wallpapers = await ImagesAPI.getPopularImages();
+    const wallpaper = wallpapers.find(({ id }) => id === wallpaperId);
+    const currentWallpaper = await ImagesAPI.getImageById(wallpaperId);
     return (
         <div className={styles['wallpaper-viewer-page-container']}>
-            <ImageViewer wallpaper={wallpaper!} wallpapers={wallpapers} />
+            <ImageViewer wallpaper={currentWallpaper} wallpapers={wallpapers} />
             <Image className={styles['wallpaper-viewer-page-background-image']} src={wallpaper?.url + 'h=128'} fill alt={''} />
         </div>
     );

@@ -21,14 +21,14 @@ export type JWTResponse = {
 
 export const AuthAPI = {
     async loginUser(loginBody: LoginBody) {
-        return axios.post(`${BASE_URL}/api/auth/sign-in`, loginBody);
+        return axios.post(`${BASE_URL}/api/v1/auth/sign-in`, loginBody);
     },
 
     async registerUser(credentials: RegisterBody ) {
-        return axios.post(`${BASE_URL}/api/auth/sign-up`, credentials);
+        return axios.post(`${BASE_URL}/api/v1/auth/sign-up`, credentials);
     },
 
     async loginUserViaGoogle(accessToken: string): Promise<AxiosResponse<JWTResponse>> {
-        return axios.post(`${BASE_URL}/api/auth/sign-in/by/google`, { token: accessToken });
+        return axios.post(`${BASE_URL}/api/v1/auth/sign-in/google`, { token: accessToken });
     }
 }

@@ -14,11 +14,11 @@ type Props = {
 export default async function InterceptedWallpaperView({ params }: Props) {
     const { wallpaperId } = await params;
     // TODO: Change endpoint, when node.js server will be ready
-    const wallpapers = await ImagesAPI.getAllWallpapers();
-    const wallpaper = wallpapers.find(({ id }) => id === wallpaperId);
+    // const wallpapers = await ImagesAPI.getAllWallpapers();
+    const wallpaper = await ImagesAPI.getImageById(wallpaperId);
     return (
         <ModalLayout modalName={styles['wallpaper-viewer']}>
-            <ImageViewer wallpaper={wallpaper!} wallpapers={wallpapers} />
+            <ImageViewer wallpaper={wallpaper!} wallpapers={[]} />
         </ModalLayout>
     )
 }
