@@ -1,6 +1,6 @@
 import styles from '@/styles/wallpaperViewerPreviewPage.module.scss'
 import ImageViewer from "@/components/ImageViewer/ImageViewer";
-import {ImagesAPI} from "@/api/Images";
+import {ImagesAPI, POPULAR_IMAGES_COUNT} from "@/api/Images";
 import Image from 'next/image';
 
 type Params = {
@@ -15,7 +15,7 @@ export default async function WallpaperPreviewPage({ params }: Props) {
     const { wallpaperId } = await params;
 
     // TODO: Change, when topic-related images will be ready
-    const wallpapers = await ImagesAPI.getPopularImages();
+    const wallpapers = await ImagesAPI.getPopularImages(POPULAR_IMAGES_COUNT);
     const wallpaper = wallpapers.find(({ id }) => id === wallpaperId);
     const currentWallpaper = await ImagesAPI.getImageById(wallpaperId);
     return (

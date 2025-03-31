@@ -1,0 +1,11 @@
+.wallpapers-gallery {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+
+    & > div {
+        justify-self: flex-start;
+        margin: 10px 5px;
+    }
+}

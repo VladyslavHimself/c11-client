@@ -1,9 +1,14 @@
-import {ChangeEvent, useCallback, useState} from "react";
+import React from "react";
 
-export default function useInput(initialValue?: string) {
-    const [value, setValue] = useState<string>(initialValue || '');
+export type InputReturnValues = {
+    value: string | undefined;
+    onChange: ({target}: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
-    const handleInputChange = useCallback(({ target }: ChangeEvent<HTMLInputElement>) => {
+export default function useInput(initialValue?: string): InputReturnValues {
+    const [value, setValue] = React.useState<string | undefined>(initialValue || undefined);
+
+    const handleInputChange = React.useCallback(({ target }: React.ChangeEvent<HTMLInputElement>) => {
         setValue(target?.value);
     }, [])
 

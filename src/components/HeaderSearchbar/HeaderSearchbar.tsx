@@ -7,17 +7,37 @@ import styles from './headerSearchbar.module.scss';
 import SearchIcon from "../../../public/SearchIcon";
 import React from "react";
 import useInput from "@/components/HeaderSearchbar/useInput";
+import { useRouter, useSearchParams } from "next/navigation";
 
-export default function HeaderSearchbar() {
-    const searchInput = useInput();
+export const SEARCH_QUERY = "search_query";
+
+type Props = {
+    routePath?: string
+}
+
+
+export default function HeaderSearchbar({ routePath }: Props) {
+    const searchParams = useSearchParams();
+    const router = useRouter();
+    const searchInput = useInput()
+
+    // TODO: Make service functions
+    function onSearchHandler() {
+        if (routePath) {
+            return router.push(routePath + `?${SEARCH_QUERY}=` + searchInput.value);
+        }
+
+        return router.push(window.location.pathname + `?${SEARCH_QUERY}=${searchInput.value}`);
+    }
+
 
     return (
         <div className={styles['header']}>
             <div className={styles['header-searchbar']}>
                 <SearchIcon />
-                <Input placeholder="Search..." {...searchInput} />
+                <Input defaultValue={searchParams.get(SEARCH_QUERY) || ''} placeholder="Search..." {...searchInput} />
             </div>
-            <Button variant="accent" size="md" disabled={!searchInput.value} onClick={() => {}}>Search</Button>
+            <Button variant="accent" size="md" disabled={!searchInput.value} onClick={onSearchHandler}>Search</Button>
         </div>
     );
 };

@@ -3,7 +3,7 @@ import WallpaperCarousel from "@/components/WallpaperCarousel/WallpaperCarousel"
 import {Heading} from "@/components/ui/Heading/Heading";
 
 import styles from '@/styles/dashboard.module.scss';
-import {ImagesAPI} from "@/api/Images";
+import {ImagesAPI, POPULAR_IMAGES_COUNT} from "@/api/Images";
 import PopularTopicsBoard from "@/components/PopularTopicsBoard/PopularTopicsBoard";
 import NextIcon from "../../../public/NextIcon";
 
@@ -38,11 +38,11 @@ const mockedTopicsData = [
 ]
 
 export default async function Home() {
-    const wallpapers = await ImagesAPI.getPopularImages();
+    const wallpapers = await ImagesAPI.getPopularImages(POPULAR_IMAGES_COUNT);
 
     return (
       <div style={{height:'100vh', flex: '1 1 100%', overflow: 'auto'}}>
-          <HeaderSearchbar />
+          <HeaderSearchbar routePath={'/explore'} />
           <div className={styles['dashboard']}>
               <div className={styles['dashboard-section']}>
                   <Heading title="Popular" />

@@ -28,6 +28,7 @@
         display: flex;
     }
 
+    // TODO: MAKE SHADOW FUNCTIONS
     &::before, &::after {
         content: '';
         position: absolute;

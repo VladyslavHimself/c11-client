@@ -1,6 +1,6 @@
 import {api} from "@/api";
 
-const POPULAR_IMAGES_COUNT = 12;
+export const POPULAR_IMAGES_COUNT = 12;
 
 export type WallpaperResponse = {
     id: string
@@ -24,10 +24,20 @@ export type WallpaperResponse = {
     tags: string[]
 }
 
+export type FoundImagesResponse = {
+    hits: WallpaperResponse[],
+    "query": string,
+    "processingTimeMs": number,
+    "hitsPerPage": number,
+    "page": number,
+    "totalPages": number,
+    "totalHits": number
+}
+
 
 export const ImagesAPI = {
-    getPopularImages() {
-        return api.get(`/api/v1/images/popular?count=${POPULAR_IMAGES_COUNT}`).then(({ data }: { data: WallpaperResponse[] }) => data).catch(err => {
+    getPopularImages(count) {
+        return api.get(`/api/v1/images/popular?count=${count}`).then(({ data }: { data: FoundImagesResponse[] }) => data).catch(err => {
             if (err.status === 401) return null;
             return err;
         });
@@ -35,6 +45,13 @@ export const ImagesAPI = {
 
     getImageById(id: string) {
         return api.get(`/api/v1/images/${id}`).then(({ data }: { data: WallpaperResponse }) => data).catch(err => {
+            if (err.status === 401) return null;
+            return err;
+        });
+    },
+
+    searchImages(count, input) {
+        return api.get(`/api/v1/images/search?input=${input}`).then(({ data }: { data: WallpaperResponse[] }) => data).catch(err => {
             if (err.status === 401) return null;
             return err;
         });

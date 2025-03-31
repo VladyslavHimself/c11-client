@@ -21,9 +21,9 @@ const generateRoutes = () => [
         action: () => {}
     },
     {
-        title: "Gallery",
+        title: "Explore",
         icon: GalleryIcon,
-        link: "/gallery",
+        link: "/explore",
         action: () => {}
     },
     {

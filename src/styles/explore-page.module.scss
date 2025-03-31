@@ -1,0 +1,11 @@
+.explore-page {
+  flex: 1 1 100%;
+  overflow: auto;
+  height: 100vh;
+
+  // TODO: Unify wrappers after main release
+  .explore-page-content-wrapper {
+    padding: 8px;
+    color: white;
+  }
+}
