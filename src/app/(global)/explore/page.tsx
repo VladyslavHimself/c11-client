@@ -17,7 +17,7 @@ export default async function ExplorePage() {
             <div className={styles['explore-page-content-wrapper']}>
                 <Heading title="Topics" subtitle="Explore trending topics" />
                 <TopicsCarousel topics={topics} selectedTopics={[]} />
-                <hr style={{ borderColor: '#202020', margin: "15px 0"}}/>
+                <hr style={{ borderColor: '#202020', margin: "15px 0"}} />
 
                 <WallpapersGallery wallpapers={wallpapers} />
             </div>

@@ -35,7 +35,7 @@ const generateRoutes = () => [
     {
         title: "Subscriptions",
         icon: StarsIcon,
-        link: "#",
+        link: "/subscriptions",
         action: () => {},
     },
 ]
