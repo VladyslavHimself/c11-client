@@ -1,0 +1,40 @@
+.subscription-list-item {
+    width: 500px;
+    height: 150px;
+    background-color: #101010;
+    border-radius: 16px;
+    padding: 35px 25px 35px 16px;
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    .subscription-list-item-user-info {
+        height: 100%;
+
+        display: flex;
+        align-items: center;
+
+        .subscription-list-item-user-info-avatar {
+            svg {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        .subscription-list-item-user-info-metadata {
+            margin-left: 20px;
+
+            .subscription-list-item-user-info-initials {
+                font-family: 'Poppins', sans-serif;
+                font-size: 16px;
+            }
+
+            .subscription-list-item-user-info-post-publications-count {
+                font-family: 'Poppins', sans-serif;
+                font-size: 14px;
+                color: #9E9E9E;
+            }
+        }
+    }
+}

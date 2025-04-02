@@ -1,0 +1,10 @@
+.subscriptions-page {
+  flex: 1 1 100%;
+  overflow: auto;
+  height: 100vh;
+
+  .subscriptions-page-content-wrapper {
+    padding: 23px 7px;
+    color: white;
+  }
+}

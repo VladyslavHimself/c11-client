@@ -1,0 +1,10 @@
+.subscription-list {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 25px;
+
+    & > div {
+        margin-bottom: 25px;
+    }
+}
