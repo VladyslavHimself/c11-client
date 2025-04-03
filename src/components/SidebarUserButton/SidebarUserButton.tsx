@@ -45,9 +45,10 @@ export default function SidebarUserButton({ user }: Props) {
     );
     
     function onOpenProfile() {
-        console.log('open profile');
+        router.push('/profile');
     }
 
+    // TODO: Move outside
     function withAuthorizedAccesss(session: Session, callback: () => void) {
         if (session.status === 'authenticated') {
             return callback();
