@@ -1,0 +1,32 @@
+@function _shadow-gradient($direction, $color: #000, $strength: 1) {
+  @if $direction == 'left' {
+    @return linear-gradient(to right, rgba($color, $strength), rgba($color, 0));
+  } @else if $direction == 'right' {
+    @return linear-gradient(to left, rgba($color, $strength), rgba($color, 0));
+  } @else {
+    @warn "Unsupported direction: #{$direction}";
+    @return none;
+  }
+}
+
+@mixin side-shadows($width: 10%, $color: #000, $strength: 1) {
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: $width;
+    pointer-events: none;
+    z-index: 20;
+  }
+
+  &::before {
+    left: 0;
+    background: _shadow-gradient(left, $color, $strength);
+  }
+
+  &::after {
+    left: calc(100% - #{$width});
+    background: _shadow-gradient(right, $color, $strength);
+  }
+}

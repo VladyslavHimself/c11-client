@@ -1,3 +1,5 @@
+@import '@/scss-services/side-shadows.service';
+
 .wallpaper-carousel {
     width: 1200px;
     height: 200px;
@@ -28,25 +30,5 @@
         display: flex;
     }
 
-    // TODO: MAKE SHADOW FUNCTIONS
-    &::before, &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-
-        width: 10%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 20;
-    }
-
-    &::before {
-        left: 0;
-        background: linear-gradient(to right, rgba(0,0,0, 100), rgba(0, 0, 0, 0));
-    }
-
-    &::after {
-        left: 90%;
-        background: linear-gradient(to left, rgba(0,0,0, 100), rgba(0, 0, 0, 0));
-    }
+    @include side-shadows();
 }

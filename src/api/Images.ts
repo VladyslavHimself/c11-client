@@ -57,7 +57,7 @@ export const ImagesAPI = {
         });
     },
 
-    getFavouriteImages() {
+    getFavouriteImages(): Promise<WallpaperResponse[]> {
         return api.get(`/api/v1/images/favourites`).then(({ data }: { data: WallpaperResponse[] }) => data).catch(err => {
             if (err.status === 401) return null;
             return err;
