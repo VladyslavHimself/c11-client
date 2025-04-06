@@ -1,0 +1,42 @@
+.home-page {
+  height: 100vh;
+  flex: 1 1 100%;
+  overflow: auto;
+
+  .home-page-content-wrapper {
+    padding: 8px;
+
+    .popular-topics-section {
+      margin-top: 25px;
+
+      .popular-topics {
+        display: flex;
+        align-items: center;
+
+        .explore-more-button {
+          width: 130px;
+          height: 105px;
+          border: 1px solid rgba(255, 255, 255, 0.05);
+          border-radius: 20px;
+          background-color: #101010;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 8px;
+
+          font-family: 'Poppins', sans-serif;
+          color: white;
+          font-size: 14px;
+
+          transition: .4s ease;
+          &:hover { opacity: .7; }
+          &:active { opacity: 1; }
+        }
+      }
+    }
+  }
+}
+
+

@@ -2,7 +2,7 @@ import HeaderSearchbar from "@/components/HeaderSearchbar/HeaderSearchbar";
 import WallpaperCarousel from "@/components/WallpaperCarousel/WallpaperCarousel";
 import {Heading} from "@/components/ui/Heading/Heading";
 
-import styles from '@/styles/dashboard.module.scss';
+import styles from '@/styles/home-page.module.scss';
 import {ImagesAPI, POPULAR_IMAGES_COUNT} from "@/api/Images";
 import PopularTopicsBoard from "@/components/PopularTopicsBoard/PopularTopicsBoard";
 import NextIcon from "../../../public/NextIcon";
@@ -37,21 +37,21 @@ const mockedTopicsData = [
     }
 ]
 
-export default async function Home() {
+export default async function HomePage() {
     const wallpapers = await ImagesAPI.getPopularImages(POPULAR_IMAGES_COUNT);
 
     return (
-      <div style={{height:'100vh', flex: '1 1 100%', overflow: 'auto'}}>
+      <div className={styles['home-page']}>
           <HeaderSearchbar routePath={'/explore'} />
-          <div className={styles['dashboard']}>
-              <div className={styles['dashboard-section']}>
+          <div className={styles['home-page-content-wrapper']}>
+              <div className={styles['popular-wallpapers-section']}>
                   <Heading title="Popular" />
                   <div className="popular-wallpapers">
                       <WallpaperCarousel wallpapers={wallpapers} />
                   </div>
               </div>
 
-              <div className={styles['dashboard-section']}>
+              <div className={styles['popular-topics-section']}>
                   <Heading title="Explore popular topics" />
                   <div className={styles['popular-topics']}>
                       <PopularTopicsBoard topics={mockedTopicsData} />
