@@ -40,7 +40,8 @@ type FoundTopicResponse = {
 
 export const TopicsAPI = {
     getPopularTopics(count: number): Promise<TopicResponseBody[]> {
-        return api.get(`/api/v1/topics/popular?count=${count}`).then(({ data }: { data: TopicResponseBody[] }) => data).catch(err => {
+        return api.get(`/api/v1/topics/popular`, { params: count ? { count } : undefined, })
+            .then(({ data }: { data: TopicResponseBody[] }) => data).catch(err => {
             if (err.status === 401) return null;
             return err;
         })

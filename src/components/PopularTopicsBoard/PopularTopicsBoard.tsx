@@ -1,5 +1,5 @@
 import styles from './popularTopicsBoard.module.scss';
-import TopicFrame from "@/components/PopularTopicsBoard/TopicFrame/TopicFrame";
+import TopicFrame from "@/components/TopicFrame/TopicFrame";
 
 type Props = {
     topics: TopicType[]

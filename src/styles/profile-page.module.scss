@@ -10,5 +10,14 @@
     .profile-page-uploads-section {
       margin-top: 27px;
     }
+
+    .profile-page-created-topics-section {
+      & > div:first-child {
+        display: flex;
+        align-items: center;
+
+        button { margin-left: 15px}
+      }
+    }
   }
 }

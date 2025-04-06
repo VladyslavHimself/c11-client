@@ -4,6 +4,7 @@ import StarIcon from "../../../public/StarIcon";
 import LikeIcon from "../../../public/LikeIcon";
 import ResolutionIcon from "../../../public/ResolutionIcon";
 import DownloadIcon from "../../../public/DownloadIcon";
+import UserIcon from "../../../public/UserIcon";
 
 // TODO: Optimize with template building pattern ("Prototype" pattern will have been used)
 export default function WallpaperFrameViewerPreviewMenu() {

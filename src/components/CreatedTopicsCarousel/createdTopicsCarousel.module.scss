@@ -1,0 +1,33 @@
+@import '@/scss-services/side-shadows.service';
+
+.created-topics-carousel {
+  width: 100%;
+  display: flex;
+
+  margin-top: 15px;
+
+  padding-bottom: 25px;
+
+  overflow: hidden;
+
+  .created-topics-carousel-container {
+    width: 100%;
+    display: flex;
+    position: relative;
+    cursor: grab;
+
+    @include side-shadows();
+
+    .topic-item-container {
+      // TODO: Mocked photo
+      img {
+        background: url("https://i.pinimg.com/736x/83/48/67/834867345c35b4a6ccec9948535c8d6b.jpg");
+        background-size: cover;
+      }
+
+      &:not(:first-child) > div {
+        margin-left: 15px;
+      }
+    }
+  }
+}
