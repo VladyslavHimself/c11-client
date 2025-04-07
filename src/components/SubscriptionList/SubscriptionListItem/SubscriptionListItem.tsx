@@ -28,7 +28,7 @@ export default function SubscriptionListItem({ subscription }: Props) {
                 </div>
             </div>
 
-            <FollowButton isFollowing />
+            <FollowButton isFollowing subscription={subscription} />
         </div>
     );
 };

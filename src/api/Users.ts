@@ -1,6 +1,6 @@
 import {api} from "@/api";
 
-type UserReaction = 'FOLLOW' | 'UNFOLLOW';
+export type UserFollowReaction = 'FOLLOW' | 'UNFOLLOW';
 
 export type SubscriptionUserMetadata = {
     id: string
@@ -41,7 +41,7 @@ export const UsersAPI = {
         });
     },
 
-    setUserReaction(targetUserId: string, reaction: UserReaction) {
+    setUserReaction(targetUserId: string, reaction: UserFollowReaction) {
         return api.post(`/api/v1/users/${targetUserId}/reaction`, { reaction: reaction }).then(({ data }: { data: UserResponse}) => data).catch(err => {
             if (err.status === 401) return null;
             return err;
