@@ -1,9 +1,16 @@
 import styles from './topicFrameOwnerMenu.module.scss';
 import {TrashIcon} from "lucide-react";
 import {Button} from "@/components/ui/button";
-import UserIcon from "../../../../public/UserIcon";
+import {TopicResponseBody} from "@/api/Topics";
+import PhotoIcon from "../../../../public/PhotoIcon";
 
-export default function TopicFrameOwnerMenu() {
+type Props = {
+    topic: TopicResponseBody
+}
+
+export default function TopicFrameOwnerMenu({ topic }: Props) {
+
+    console.log(topic);
     return (
         <div className={styles['topic-frame-owner-menu']}>
             <Button onClick={e => {
@@ -14,8 +21,8 @@ export default function TopicFrameOwnerMenu() {
             </Button>
 
             <Button>
-                <UserIcon />
-                25.2k
+                <PhotoIcon />
+                { topic?.images || '0' }
             </Button>
         </div>
     );

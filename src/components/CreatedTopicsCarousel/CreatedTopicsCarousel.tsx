@@ -14,7 +14,6 @@ type Props = {
 export default function CreatedTopicsCarousel({ topics }: Props) {
     const { carouselOuterRef, carouselInnerRef, dragConstraints } = useDragControlCarousel();
 
-
     return (
         <div ref={carouselOuterRef} className={styles['created-topics-carousel']}>
             <div className={styles['created-topics-carousel-container']}>

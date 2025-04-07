@@ -12,6 +12,7 @@ import CarouselNavigationButton from "@/components/WallpaperCarousel/CarouselNav
 import WallpaperFrameViewerPreviewMenu
     from "@/components/WallpaperFramePreviewMenus/WallpaperFrameViewerPreviewMenu";
 import {useRouter} from "next/navigation";
+import React from "react";
 
 type Props = {
     wallpapers: WallpaperResponse[]
@@ -58,7 +59,7 @@ export default function WallpaperCarousel({ wallpapers }: Props) {
                         wallpaper={wallpaper}
                         onClickHandler={onSelectWallpaperHandler}
                     >
-                        <WallpaperFrameViewerPreviewMenu />
+                        <WallpaperFrameViewerPreviewMenu wallpaperMetadata={wallpaper} />
                     </WallpaperFrame>
                 )
                 }

@@ -3,12 +3,12 @@ import styles from '@/styles/explore-page.module.scss';
 import HeaderSearchbar from "@/components/HeaderSearchbar/HeaderSearchbar";
 import {Heading} from "@/components/ui/Heading/Heading";
 import TopicsCarousel from "@/components/TopicsCarousel/TopicsCarousel";
-import {ImagesAPI, POPULAR_IMAGES_COUNT } from "@/api/Images";
+import {ImagesAPI } from "@/api/Images";
 import {POPULAR_TOPICS_COUNT, TopicsAPI} from "@/api/Topics";
 import WallpapersGallery from "@/components/WallpapersGallery/WallpapersGallery";
 
 export default async function ExplorePage() {
-    const wallpapers = await ImagesAPI.getPopularImages(POPULAR_IMAGES_COUNT);
+    const wallpapers = await ImagesAPI.getPopularImages();
     const topics = await TopicsAPI.getPopularTopics(POPULAR_TOPICS_COUNT);
 
     return (

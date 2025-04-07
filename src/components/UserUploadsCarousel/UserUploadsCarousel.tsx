@@ -41,7 +41,7 @@ export default function UserUploadsCarousel({ userUploads }: Props) {
                                 wallpaper={wallpaper}
                                 onClickHandler={onSelectWallpaperHandler}
                             >
-                                <WallpaperFrameOwnerPreviewMenu />
+                                <WallpaperFrameOwnerPreviewMenu wallpaperMetadata={wallpaper} />
                             </WallpaperFrame>
                         ))
                     }

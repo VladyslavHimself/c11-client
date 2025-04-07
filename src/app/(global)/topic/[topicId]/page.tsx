@@ -5,7 +5,7 @@ import WallpapersGallery from "@/components/WallpapersGallery/WallpapersGallery"
 import React from "react";
 import HeaderSearchbar from "@/components/HeaderSearchbar/HeaderSearchbar";
 import {TopicsAPI} from "@/api/Topics";
-import ExploreButton from "@/components/ExploreButton/ExploreButton";
+import BackButton from "@/components/ExploreButton/ExploreButton";
 
 type Params = { topicId: string; }
 
@@ -25,7 +25,7 @@ export default async function TopicPage({ params }: Props) {
             <div className={styles['topic-page-wrapper']}>
                 <div className={styles['topic-page-heading']}>
                     <Heading title={topicDetails.name} />
-                    <ExploreButton />
+                    <BackButton />
                 </div>
 
                 <hr style={{ borderColor: '#202020', margin: "15px 0"}}/>

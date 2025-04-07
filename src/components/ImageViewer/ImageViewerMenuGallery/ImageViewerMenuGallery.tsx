@@ -5,17 +5,18 @@ import ImageViewerMenuGalleryItem
 import React from "react";
 
 type Props = {
-    suggestedWallpapers: WallpaperResponse[]
+    suggestedWallpapers: WallpaperResponse[],
+    topicName: string,
 }
 
 // TODO: Remove slice() from JSX when "getPopular" endpoint would be done on server
-export default function ImageViewerMenuGallery({ suggestedWallpapers }: Props) {
+export default function ImageViewerMenuGallery({ suggestedWallpapers, topicName }: Props) {
 
     return (
         <div className={styles['image-viewer-menu-gallery']}>
-            <div className={styles['image-viewer-menu-gallery-title']}>More wallpapers with &#34;Anime&#34; topic</div>
+            <div className={styles['image-viewer-menu-gallery-title']}>More wallpapers with &#34;{topicName}&#34; topic</div>
             <div className={styles['image-viewer-menu-gallery-container']}>
-                {suggestedWallpapers.slice(0, 3).map((wallpaper, index) => {
+                {suggestedWallpapers.map((wallpaper, index) => {
 
                     return (
                         <ImageViewerMenuGalleryItem

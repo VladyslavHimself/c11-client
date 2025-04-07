@@ -10,8 +10,8 @@ export default function ExploreButton() {
     const router = useRouter();
 
     return (
-        <IconButton action={() => router.push("/explore")}>
-         <CloseIcon />
+        <IconButton action={() => router.back()}>
+            <CloseIcon />
         </IconButton>
     );
 };

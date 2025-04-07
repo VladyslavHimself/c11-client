@@ -27,7 +27,7 @@ export default function WallpapersGallery({ wallpapers }: Props) {
                         wallpaper={wallpaper}
                         onClickHandler={onSelectWallpaperHandler}
                     >
-                        <WallpaperFrameViewerPreviewMenu />
+                        <WallpaperFrameViewerPreviewMenu wallpaperMetadata={wallpaper} />
                     </WallpaperFrame>
                 ))
             }

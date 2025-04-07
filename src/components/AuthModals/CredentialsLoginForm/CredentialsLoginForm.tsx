@@ -10,7 +10,7 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import styles from './credentialsLoginForm.module.scss';
 import {Button} from "@/components/ui/button";
 import {useRouter} from "next/navigation";
-import {revalidateLoginPath} from "@/actions/auth";
+import {revalidateAllPathes} from "@/actions/pathesRevalidators";
 
 const loginFormSchema = z.object({
     email: z.string().min(2, {
@@ -41,7 +41,7 @@ export default function CredentialsLoginForm() {
                 });
 
                 if (res?.ok) {
-                    await revalidateLoginPath();
+                    await revalidateAllPathes();
                     router.back();
                 }
             })}>

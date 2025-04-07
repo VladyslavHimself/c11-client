@@ -5,13 +5,12 @@ import {ImagesAPI} from "@/api/Images";
 import UserUploadsCarousel from "@/components/UserUploadsCarousel/UserUploadsCarousel";
 import CreatedTopicsCarousel from "@/components/CreatedTopicsCarousel/CreatedTopicsCarousel";
 import {TopicsAPI} from "@/api/Topics";
-import IconButton from "@/components/ui/IconButton/IconButton";
 import AddNewButton from "@/components/AddNewButton/AddNewButton";
 
 
 export default async function ProfilePage() {
     // TODO: Refactor when the endpoint will have been fixed
-    const userUploads = await ImagesAPI.getFavouriteImages();
+    const userUploads = await ImagesAPI.getUserUploadedImages();
     const userCreatedTopics =  await TopicsAPI.getPopularTopics(10);
 
     return (

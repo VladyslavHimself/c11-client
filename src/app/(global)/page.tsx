@@ -5,40 +5,12 @@ import {Heading} from "@/components/ui/Heading/Heading";
 import styles from '@/styles/home-page.module.scss';
 import {ImagesAPI, POPULAR_IMAGES_COUNT} from "@/api/Images";
 import PopularTopicsBoard from "@/components/PopularTopicsBoard/PopularTopicsBoard";
-import NextIcon from "../../../public/NextIcon";
-
-const mockedTopicsData = [
-    {
-        id: '1',
-        name: 'Anime',
-        created_at: '2020-02-09T00:00:00.000Z',
-        imageUrl: 'https://i.pinimg.com/1200x/c8/b7/41/c8b7413ccd33544ab59691a09a7b4107.jpg'
-    },
-
-    {
-        id: '2',
-        name: 'Statues',
-        created_at: '2020-02-09T00:00:00.000Z',
-        imageUrl: 'https://i.pinimg.com/1200x/a0/de/cf/a0decf534a6573701c8c1dd8064de6cc.jpg'
-    },
-
-    {
-        id: '3',
-        name: 'Aesthetics',
-        created_at: '2020-02-09T00:00:00.000Z',
-        imageUrl: 'https://i.pinimg.com/1200x/69/4d/1c/694d1c55a51c240a5a98da3df18ea0ba.jpg'
-    },
-
-    {
-        id: '4',
-        name: 'K-pop',
-        created_at: '2020-02-09T00:00:00.000Z',
-        imageUrl: 'https://i.pinimg.com/1200x/3b/d4/78/3bd47853eee3a5deb012d7f0ed442e2c.jpg'
-    }
-]
+import {TopicsAPI} from "@/api/Topics";
+import ExploreMoreButton from "@/components/ExploreMoreButton/ExploreMoreButton";
 
 export default async function HomePage() {
-    const wallpapers = await ImagesAPI.getPopularImages(POPULAR_IMAGES_COUNT);
+    const popularWallpapers = await ImagesAPI.getPopularImages(POPULAR_IMAGES_COUNT);
+    const popularTopics = await TopicsAPI.getPopularTopics(4);
 
     return (
       <div className={styles['home-page']}>
@@ -47,18 +19,15 @@ export default async function HomePage() {
               <div className={styles['popular-wallpapers-section']}>
                   <Heading title="Popular" />
                   <div className="popular-wallpapers">
-                      <WallpaperCarousel wallpapers={wallpapers} />
+                      <WallpaperCarousel wallpapers={popularWallpapers} />
                   </div>
               </div>
 
               <div className={styles['popular-topics-section']}>
                   <Heading title="Explore popular topics" />
                   <div className={styles['popular-topics']}>
-                      <PopularTopicsBoard topics={mockedTopicsData} />
-                      <button className={styles['explore-more-button']}>
-                          <NextIcon />
-                          Explore more
-                      </button>
+                      <PopularTopicsBoard topics={popularTopics} />
+                      <ExploreMoreButton />
                   </div>
               </div>
           </div>

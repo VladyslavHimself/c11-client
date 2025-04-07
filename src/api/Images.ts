@@ -34,10 +34,12 @@ export type FoundImagesResponse = {
     "totalHits": number
 }
 
+export type UserReactionToImage = 'LIKE' | 'DISLIKE' | 'FAVORITE' | 'UNFAVORITE'
+
 
 export const ImagesAPI = {
-    getPopularImages(count) {
-        return api.get(`/api/v1/images/popular?count=${count}`).then(({ data }: { data: FoundImagesResponse[] }) => data).catch(err => {
+    getPopularImages(count?: number) {
+        return api.get(`/api/v1/images/popular`, { params: count ? { count } : undefined }).then(({ data }: { data: FoundImagesResponse[] }) => data).catch(err => {
             if (err.status === 401) return null;
             return err;
         });
@@ -50,7 +52,7 @@ export const ImagesAPI = {
         });
     },
 
-    searchImages(count: number, input: number) {
+    searchImages(count: number, input: number): Promise<FoundImagesResponse> {
         return api.get(`/api/v1/images/search?input=${input}`).then(({ data }: { data: WallpaperResponse[] }) => data).catch(err => {
             if (err.status === 401) return null;
             return err;
@@ -62,5 +64,22 @@ export const ImagesAPI = {
             if (err.status === 401) return null;
             return err;
         });
+    },
+
+    getUserUploadedImages(): Promise<WallpaperResponse[]> {
+        return api.get(`/api/v1/images/uploads`).then(({ data }: { data: WallpaperResponse[] }) => data).catch(err => {
+            if (err.status === 401) return null;
+            return err;
+        });
+    },
+
+    setUserReactionToImage(imageId: string, reaction: UserReactionToImage) {
+        return api.post(`/api/v1/images/${imageId}/reaction`, {
+            "reaction": reaction
+        });
+    },
+
+    deleteImage(imageId: string): Promise<void> {
+        return api.delete(`/api/v1/images/${imageId}`);
     }
 }
