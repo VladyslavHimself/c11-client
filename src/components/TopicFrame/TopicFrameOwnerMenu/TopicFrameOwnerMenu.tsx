@@ -9,8 +9,6 @@ type Props = {
 }
 
 export default function TopicFrameOwnerMenu({ topic }: Props) {
-
-    console.log(topic);
     return (
         <div className={styles['topic-frame-owner-menu']}>
             <Button onClick={e => {
