@@ -26,7 +26,7 @@ export default function CreatedTopicsCarousel({ topics }: Props) {
                     {topics?.map((topic) => (
                         <div key={topic.id} className={styles['topic-item-container']}>
                             <TopicFrame topic={topic}>
-                                <TopicFrameOwnerMenu />
+                                <TopicFrameOwnerMenu topic={topic} />
                             </TopicFrame>
                         </div>
                     ))}

@@ -52,5 +52,9 @@ export const TopicsAPI = {
             if (err.status === 401) return null;
             return err;
         })
+    },
+
+    deleteTopic(topicId: string): Promise<void> {
+        return api.delete(`/api/v1/topics/${topicId}`);
     }
 }

@@ -2,19 +2,19 @@ import axios from "axios";
 import React from "react";
 import {revalidateAllPathes} from "@/actions/pathesRevalidators";
 
-const PROXY_ENDPOINT = '/api/delete-image'
+const getProxyEndpoint = (topicId: string) => `/api/delete-topic/${topicId}`
 
-export function useDeleteImageMutation() {
+export function useDeleteTopicMutation() {
     const [data, setData] = React.useState<any>(null);
     const [loading, setLoading] = React.useState(false);
     const [error, setError] = React.useState<string | null>(null);
 
-    const deleteImage = React.useCallback(async (imageId: string) => {
+    const deleteTopic = React.useCallback(async (topicId: string) => {
         setLoading(true);
         setError(null);
 
         try {
-            const response = await axios.delete(PROXY_ENDPOINT, { imageId });
+            const response = await axios.delete(getProxyEndpoint(topicId));
             setData(response.data);
 
         } catch (err) {
@@ -25,5 +25,5 @@ export function useDeleteImageMutation() {
         }
     }, []);
 
-    return { deleteImage, data, loading, error };
+    return { deleteTopic, data, loading, error };
 }

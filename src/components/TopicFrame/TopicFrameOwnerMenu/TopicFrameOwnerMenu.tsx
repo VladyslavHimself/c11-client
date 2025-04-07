@@ -3,6 +3,7 @@ import {TrashIcon} from "lucide-react";
 import {Button} from "@/components/ui/button";
 import {TopicResponseBody} from "@/api/Topics";
 import PhotoIcon from "../../../../public/PhotoIcon";
+import DeleteTopicButton from "@/components/DeleteTopicButton/DeleteTopicButton";
 
 type Props = {
     topic: TopicResponseBody
@@ -11,13 +12,7 @@ type Props = {
 export default function TopicFrameOwnerMenu({ topic }: Props) {
     return (
         <div className={styles['topic-frame-owner-menu']}>
-            <Button onClick={e => {
-                e.stopPropagation();
-                console.log('deleted wallpaper')
-            }}>
-                <TrashIcon style={{ color: "red" }} />
-            </Button>
-
+            <DeleteTopicButton topic={topic} />
             <Button>
                 <PhotoIcon />
                 { topic?.images || '0' }
