@@ -33,6 +33,9 @@
     border-radius: 8px;
     padding: 8px 8px 12px 8px;
 
+    & > div {
+      min-width: 196px;
+    }
 
   }
 

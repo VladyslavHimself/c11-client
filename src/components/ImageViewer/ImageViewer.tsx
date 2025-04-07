@@ -8,6 +8,7 @@ import ImageViewerAuthorProfile from "@/components/ImageViewer/ImageViewerAuthor
 import ImageViewerInfoTable from "@/components/ImageViewer/ImageViewerInfoTable/ImageViewerInfoTable";
 import ImageViewerMenuGallery from "@/components/ImageViewer/ImageViewerMenuGallery/ImageViewerMenuGallery";
 import {TopicResponseBody} from "@/api/Topics";
+import ExtendedDownloadButton from "@/components/ImageViewer/ExtendedDownloadButton/ExtendedDownloadButton";
 
 
 // TODO: Replace "wallpapers" to topic-related wallpapers soon
@@ -35,12 +36,12 @@ export default function ImageViewer({ wallpaper, wallpapers, topic }: Props) {
             </div>
             <div className={styles['wallpaper-viewer-menu']}>
                 <div className={styles['wallpaper-viewer-menu-metadata']}>
-                    <div style={{ width: '196px'}}>
+                    <div>
                         <ImageViewerAuthorProfile />
-                        <ImageViewerActionsBar />
-                        <Button variant="accent" className="py-6 mt-1.5 w-full"><DownloadIcon style={{ width: 24, height: 24}} fill="black" /> Download</Button>
+                        <ImageViewerActionsBar wallpaperMetadata={wallpaper} />
+                        <ExtendedDownloadButton link={wallpaper.url} filename={wallpaper.filename} />
                     </div>
-                    <ImageViewerInfoTable wallpaper={wallpaper} topic={topic} />
+                    <ImageViewerInfoTable wallpaper={wallpaper} topic={topic} tags={[]} />
                 </div>
                 { validateImageGallery && <ImageViewerMenuGallery suggestedWallpapers={wallpapers} topicName={topic.name} />}
             </div>

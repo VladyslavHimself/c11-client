@@ -1,3 +1,4 @@
+'use client';
 import LikeIcon from "../../../public/LikeIcon";
 import {Button} from "@/components/ui/button";
 import {WallpaperResponse} from "@/api/Images";
