@@ -1,11 +1,5 @@
-.explore-page {
-  flex: 1 1 100%;
-  overflow: auto;
-  height: 100vh;
+@import "@/scss-services/page-layout.service";
 
-  // TODO: Unify wrappers after main release
-  .explore-page-content-wrapper {
-    padding: 8px;
-    color: white;
-  }
+.explore-page {
+  @include pageLayout('explore-page-content-wrapper') {};
 }

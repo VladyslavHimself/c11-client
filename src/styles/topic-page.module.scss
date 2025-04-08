@@ -1,15 +1,11 @@
+@import '@/scss-services/page-layout.service';
+
 .topic-page {
-  flex: 1 1 100%;
-
-
-  .topic-page-wrapper {
-    padding: 8px;
-    color: white;
-  }
-
-  .topic-page-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  @include pageLayout('topic-page-content-wrapper') {
+    .topic-page-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 }

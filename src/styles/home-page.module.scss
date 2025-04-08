@@ -1,20 +1,15 @@
+@import '@/scss-services/page-layout.service';
+
 .home-page {
-  height: 100vh;
-  flex: 1 1 100%;
-  overflow: auto;
-
-  .home-page-content-wrapper {
-    padding: 8px;
-
+  @include pageLayout('home-page-content-wrapper') {
     .popular-topics-section {
       margin-top: 25px;
 
       .popular-topics {
         display: flex;
-        align-items: center;
       }
+
+      align-items: center;
     }
-  }
+  };
 }
-
-

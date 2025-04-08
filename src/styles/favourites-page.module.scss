@@ -1,12 +1,5 @@
+@import '@/scss-services/page-layout.service';
 
-// TODO: Make mixin with @content for boilerplate wrapper page layouts
 .favourites-page {
-  flex: 1 1 100%;
-  overflow: auto;
-  height: 100vh;
-
-  .favourites-page-content-wrapper {
-    padding: 23px 7px;
-    color: white;
-  }
+  @include pageLayout('favourites-page-content-wrapper', 23px 7px) {};
 }

@@ -1,0 +1,5 @@
+@import '@/scss-services/page-layout.service';
+
+.create-topic-page {
+  @include pageLayout('create-topic-page-wrapper') {};
+}

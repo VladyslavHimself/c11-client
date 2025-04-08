@@ -22,7 +22,7 @@ export default async function TopicPage({ params }: Props) {
     return (
         <div className={styles['topic-page']}>
             <HeaderSearchbar />
-            <div className={styles['topic-page-wrapper']}>
+            <div className={styles['topic-page-content-wrapper']}>
                 <div className={styles['topic-page-heading']}>
                     <Heading title={topicDetails.name} />
                     <BackButton />

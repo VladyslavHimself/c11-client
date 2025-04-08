@@ -1,0 +1,12 @@
+@mixin pageLayout($wrapper-class, $padding: 8px, $color: white) {
+  flex: 1 1 100%;
+  overflow: auto;
+  height: 100vh;
+
+  .#{$wrapper-class} {
+    padding: $padding;
+    color: $color;
+
+    @content;
+  }
+}

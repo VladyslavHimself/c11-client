@@ -1,12 +1,7 @@
+@import '@/scss-services/page-layout.service';
+
 .profile-page {
-  flex: 1 1 100%;
-  overflow: auto;
-  height: 100vh;
-
-  .profile-page-content-wrapper {
-    padding: 20px 16px 0 0;
-    color: white;
-
+  @include pageLayout('profile-page-content-wrapper', 20px 16px 0 0) {
     .profile-page-uploads-section {
       margin-top: 27px;
     }
