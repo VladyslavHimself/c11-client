@@ -3,6 +3,7 @@ import React from "react";
 export type InputReturnValues = {
     value: string | undefined;
     onChange: ({target}: React.ChangeEvent<HTMLInputElement>) => void;
+    clearValue: () => void;
 }
 
 export default function useInput(initialValue?: string): InputReturnValues {
@@ -12,5 +13,9 @@ export default function useInput(initialValue?: string): InputReturnValues {
         setValue(target?.value);
     }, [])
 
-    return { value, onChange: handleInputChange};
+    function clearValue () {
+        setValue('');
+    }
+
+    return { value, onChange: handleInputChange, clearValue};
 }

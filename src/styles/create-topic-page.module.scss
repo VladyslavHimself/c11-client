@@ -1,5 +1,19 @@
 @import '@/scss-services/page-layout.service';
 
 .create-topic-page {
-  @include pageLayout('create-topic-page-wrapper') {};
+  @include pageLayout('create-topic-page-wrapper') {
+    .create-topic-page-upload-info {
+      display: flex;
+
+
+      .create-topic-page-upload-info-metadata {
+        margin-left: 15px;
+        width: 350px;
+        & > button {
+          width: 125px;
+          margin-top: 15px;
+        }
+      }
+    }
+  };
 }

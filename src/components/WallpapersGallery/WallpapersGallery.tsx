@@ -21,7 +21,7 @@ export default function WallpapersGallery({ wallpapers }: Props) {
     return (
         <div className={styles["wallpapers-gallery"]}>
             {
-                wallpapers.map((wallpaper: WallpaperResponse) => (
+                wallpapers?.map((wallpaper: WallpaperResponse) => (
                     <WallpaperFrame
                         key={wallpaper.id}
                         wallpaper={wallpaper}

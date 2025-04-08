@@ -38,6 +38,11 @@ type FoundTopicResponse = {
     updatedAt: string,
 }
 
+
+export type CreateTopicBody = {
+    name: string,
+}
+
 export const TopicsAPI = {
     getPopularTopics(count: number): Promise<TopicResponseBody[]> {
         return api.get(`/api/v1/topics/popular`, { params: count ? { count } : undefined, })
@@ -49,6 +54,13 @@ export const TopicsAPI = {
 
     getTopicById(topicId: string): Promise<FoundTopicResponse> {
         return api.get(`/api/v1/topics/${topicId}`).then(({ data }: { data: TopicResponseBody[] }) => data).catch(err => {
+            if (err.status === 401) return null;
+            return err;
+        })
+    },
+
+    createNewTopic(topicBody: CreateTopicBody) {
+        return api.post(`/api/v1/topics`, topicBody).then(({ data }: { data: TopicResponseBody }) => data).catch(err => {
             if (err.status === 401) return null;
             return err;
         })
