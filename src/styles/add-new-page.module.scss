@@ -1,0 +1,6 @@
+@import '@/scss-services/page-layout.service';
+.add-new-page {
+  @include pageLayout('add-new-page-content-wrapper') {
+
+  }
+}
