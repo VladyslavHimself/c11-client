@@ -1,9 +1,12 @@
-'use client';
-
+import styles from './uploadImageFrame.module.scss';
+import UploadIcon from "@/../public/UploadIcon";
 import React from "react";
-import styles from './createTopicImageUpload.module.scss';
 import {useDropzone} from "react-dropzone";
-import UploadIcon from "../../../public/UploadIcon";
+
+type Props = {
+    uploadedImage: null,
+    setUploadedImage: () => null,
+};
 
 const dragBehaviourMap = {
     isDragActive: 'drag-active',
@@ -11,16 +14,14 @@ const dragBehaviourMap = {
     isDragAccept: 'drag-accept'
 }
 
-
-export default function CreateTopicImageUpload() {
+export function UploadImageFrame({ uploadedImage, setUploadedImage }: Props) {
     // TODO: Remove code duplication when main tasks are done
-    const [uploadedImage, setUploadedImage] = React.useState();
     const onDropFile = React.useCallback((acceptedFiles) => {
         const file = acceptedFiles[0];
         if (file && file.type.startsWith("image/")) {
             setUploadedImage(URL.createObjectURL(file));
         }
-    }, []);
+    }, [setUploadedImage]);
 
     const { getRootProps, getInputProps, isDragActive, isDragReject, isDragAccept,} = useDropzone({
         onDrop: onDropFile,
@@ -40,32 +41,26 @@ export default function CreateTopicImageUpload() {
     }, [isDragActive, isDragReject, isDragAccept]);
 
     return (
-        <div data-drop-state={dragBehaviourState} {...getRootProps()} className={styles['create-topic-image-upload']}>
+        <div data-drop-state={dragBehaviourState} {...getRootProps()} className={styles['upload-image-frame']}>
             <input {...getInputProps()} />
             {
                 !uploadedImage && (
-                    <div className={styles['create-topic-image-upload-tile']}>
+                    <>
                         <UploadIcon />
-                        <div className={styles['create-topic-image-upload-heading']}>
-                            Upload topic image
+                        <div className={styles['upload-image-frame-title']}>
+                            Choose image or drag & drop it here.
                         </div>
+                    </>
+                )
+            }
 
-                        {
-                            isDragReject && !isDragActive && (
-                                <div>
-                                    This should be an image
-                                </div>
-                            )
-                        }
+            {
+                uploadedImage && (
+                    <div className={styles['create-topic-image-preview']}>
+                        <img src={uploadedImage} alt="" />
                     </div>
                 )
-
             }
-            {uploadedImage && (
-                <div className={styles['create-topic-image-preview']}>
-                    <img src={uploadedImage} alt="" />
-                </div>
-            )}
         </div>
     );
-};
+}

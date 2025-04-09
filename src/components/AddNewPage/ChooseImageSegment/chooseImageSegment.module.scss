@@ -1,0 +1,10 @@
+.choose-image-segment {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .choose-image-segment-button {
+        margin-top: 25px;
+    }
+}
