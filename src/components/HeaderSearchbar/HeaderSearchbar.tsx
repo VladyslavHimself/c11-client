@@ -6,7 +6,7 @@ import {Button} from "@/components/ui/button";
 import styles from './headerSearchbar.module.scss';
 import SearchIcon from "../../../public/SearchIcon";
 import React from "react";
-import useInput from "@/components/HeaderSearchbar/useInput";
+import useInput from "@/hooks/useInput";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export const SEARCH_QUERY = "search_query";

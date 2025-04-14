@@ -3,11 +3,11 @@
 import styles from '@/styles/create-topic-page.module.scss'
 import {Heading} from "@/components/ui/Heading/Heading";
 import CreateTopicImageUpload from "@/components/CreateTopicImageUpload/CreateTopicImageUpload";
-import useInput from "@/components/HeaderSearchbar/useInput";
+import useInput from "@/hooks/useInput";
 import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
 import * as React from "react";
-import useCreateNewTopicMutation from "@/hooks/useCreateNewTopicMutation";
+import useCreateNewTopicMutation from "@/apiHooks/useCreateNewTopicMutation";
 
 export default function CreateTopicPage() {
     const topicNameInput = useInput('');

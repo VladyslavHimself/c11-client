@@ -6,7 +6,7 @@ import LikeIcon from "../../../../public/LikeIcon";
 import StarIcon from "../../../../public/StarIcon";
 import MoreVertIcon from "../../../../public/MoreVertIcon";
 import {WallpaperResponse} from "@/api/Images";
-import {useUserImageReactionMutation} from "@/hooks/useUserImageReactionMutation";
+import {useUserImageReactionMutation} from "@/apiHooks/useUserImageReactionMutation";
 
 
 type Props = {

@@ -1,11 +1,6 @@
 @import '@/scss-services/page-layout.service';
 .add-new-page {
-  @include pageLayout('add-new-page-content-wrapper') {
-    height: inherit;
-
+  @include pageLayout('add-new-page-content-wrapper', 20px 0) {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
   }
 }

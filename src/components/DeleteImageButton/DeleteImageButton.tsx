@@ -1,5 +1,5 @@
 import {WallpaperResponse} from "@/api/Images";
-import {useDeleteImageMutation} from "@/hooks/useDeleteImageMutation";
+import {useDeleteImageMutation} from "@/apiHooks/useDeleteImageMutation";
 import {TrashIcon} from "lucide-react";
 import {Button} from "@/components/ui/button";
 

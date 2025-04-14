@@ -2,7 +2,7 @@
 import LikeIcon from "../../../public/LikeIcon";
 import {Button} from "@/components/ui/button";
 import {WallpaperResponse} from "@/api/Images";
-import {useUserImageReactionMutation} from "@/hooks/useUserImageReactionMutation";
+import {useUserImageReactionMutation} from "@/apiHooks/useUserImageReactionMutation";
 
 type Props = {
     wallpaperMetadata: WallpaperResponse

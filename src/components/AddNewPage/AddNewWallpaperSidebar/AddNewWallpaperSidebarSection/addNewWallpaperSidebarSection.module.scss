@@ -1,0 +1,20 @@
+.add-new-wallpaper-sidebar-section {
+    width: 100%;
+    padding: 20px 0;
+
+    .add-new-wallpaper-sidebar-section-header {
+        & > input { margin: 15px 0; }
+    }
+
+    .add-new-wallpaper-sidebar-section-content {
+        display: flex;
+        flex-wrap: wrap;
+
+        width: 100%;
+        margin-top: 16px;
+
+        .add-new-wallpaper-sidebar-section-item-wrapper {
+            margin: 0 8px 9px 0;
+        }
+    }
+}

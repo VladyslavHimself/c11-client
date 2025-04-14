@@ -6,7 +6,7 @@ import {Button} from "@/components/ui/button";
 import UnfollowIcon from "../../../public/UnfollowIcon";
 import FollowIcon from "../../../public/FollowIcon";
 import {SubscriptionUserMetadata} from "@/api/Users";
-import useUserFollowReactionMutation from "@/hooks/useUserFollowReactionMutation";
+import useUserFollowReactionMutation from "@/apiHooks/useUserFollowReactionMutation";
 
 type ButtonValue = "Follow" | "Unfollow";
 

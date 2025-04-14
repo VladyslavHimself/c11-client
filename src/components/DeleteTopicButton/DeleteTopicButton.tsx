@@ -1,6 +1,6 @@
 import {TrashIcon} from "lucide-react";
 import {Button} from "@/components/ui/button";
-import {useDeleteTopicMutation} from "@/hooks/useDeleteTopicMutation";
+import {useDeleteTopicMutation} from "@/apiHooks/useDeleteTopicMutation";
 import {TopicResponseBody} from "@/api/Topics";
 
 type Props = {

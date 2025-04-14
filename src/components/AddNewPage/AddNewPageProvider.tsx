@@ -1,28 +1,32 @@
 'use client';
 
 import React, {PropsWithChildren} from "react";
+import {AddNewPageProps} from "@/components/AddNewPage/AddNewPageProviders";
+import {TopicResponseBody} from "@/api/Topics";
 const AddNewPageStateContext = React.createContext<null|AddNewPageStateContext>(null);
 const AddNewPageActionsContext = React.createContext<null|AddNewPageActionsContext>(null);
 
 type AddNewPageStateContext = {
-    // currentStep: Step,
-    // // TODO: Change null to expected data type later
-    // uploadedImage: null
+    topicList: TopicResponseBody[];
+    selectedTopic: TopicResponseBody;
+    tagList: any[]
+    selectedTags: any[];
 }
 
 type AddNewPageActionsContext = {
-    // nextStep: () => void,
-    // previousStep: () => void,
-    // setStep: (step: Step) => void
-    // // TODO: Change null to expected data type later
-    // setUploadedImage: React.Dispatch<React.SetStateAction<null>>
+    setSelectedTopic: React.Dispatch<React.SetStateAction<TopicResponseBody>>;
+    setSelectedTags: React.Dispatch<React.SetStateAction<any[]>>;
 }
 
-export default function AddNewPageProvider({ children }: PropsWithChildren) {
+type InheritedAddNewPageProps = AddNewPageProps;
+
+export default function AddNewPageProvider({ children, tagList, topicList }: PropsWithChildren<InheritedAddNewPageProps>) {
+    const [selectedTopic, setSelectedTopic] = React.useState<TopicResponseBody>(topicList[0]);
+    const [selectedTags, setSelectedTags] = React.useState<any[]>([]);
 
     return (
-        <AddNewPageStateContext value={null}>
-            <AddNewPageActionsContext value={null}>
+        <AddNewPageStateContext value={{ topicList, tagList, selectedTopic, selectedTags}}>
+            <AddNewPageActionsContext value={{ setSelectedTopic, setSelectedTags }}>
                 { children }
             </AddNewPageActionsContext>
         </AddNewPageStateContext>

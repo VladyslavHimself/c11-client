@@ -1,0 +1,68 @@
+.add-new-wallpaper-sidebar-section-item {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100px;
+    height: 56px;
+    border-radius: 16px;
+
+    background-color: #101010;
+    border: 1px solid #FFFFFF0D;
+    cursor: pointer;
+    transition: .3s ease;
+
+
+    &.add-new-wallpaper-sidebar-section-item-extended {
+        width: 155px;
+
+        &:has(.add-new-wallpaper-sidebar-section-item-imageholder) {
+            justify-content: flex-start;
+
+            .add-new-wallpaper-sidebar-section-item-title {
+                margin-left: 10px;
+            }
+
+            .add-new-wallpaper-sidebar-section-item-imageholder {
+                flex: 0 0 51px;
+
+                img {
+                    width: 51px;
+                    height: 51px;
+                }
+            }
+        }
+    }
+
+    img {
+        position: relative;
+        top: 0;
+        left: 0;
+        height: 100%;
+        overflow: hidden;
+        object-fit: cover;
+        border-bottom-left-radius: 16px;
+        border-top-left-radius: 16px;
+        transition: .3s ease;
+    }
+
+    > div {
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+
+    }
+
+    &[data-is-selected="true"] { background-color: #202020; }
+    &:not([data-is-selected="true"]):hover {
+        background-color: #131313;
+        img {
+            filter: brightness(.8);
+        }
+    }
+}

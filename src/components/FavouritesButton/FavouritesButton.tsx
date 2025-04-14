@@ -3,7 +3,7 @@ import * as React from 'react';
 import StarIcon from "../../../public/StarIcon";
 import {Button} from "@/components/ui/button";
 import {WallpaperResponse} from "@/api/Images";
-import {useUserImageReactionMutation} from "@/hooks/useUserImageReactionMutation";
+import {useUserImageReactionMutation} from "@/apiHooks/useUserImageReactionMutation";
 
 type Props = {
     wallpaperMetadata: WallpaperResponse
