@@ -3,10 +3,8 @@ import {TopicsAPI} from "@/api/Topics";
 
 export async function POST(req: Request) {
     try {
-        const { topicBody } = await req.json();
-        console.log(topicBody);
-        const response = await TopicsAPI.createNewTopic(topicBody)
-
+        const formData = await req.formData();
+        const response = await TopicsAPI.createNewTopic(formData)
 
         // TODO: In other proxy api endpoints check if response includes data key accessor
         return NextResponse.json({ success: true, data: response });

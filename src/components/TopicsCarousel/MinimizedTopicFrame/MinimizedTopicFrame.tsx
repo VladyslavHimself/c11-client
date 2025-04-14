@@ -15,7 +15,7 @@ export default function MinimizedTopicFrame({ topic, onClickHandler }: Props) {
             <div className={styles['minimized-topic-frame-overlay']}>
                <div className={styles['minimized-topic-frame-title']}>{ topic.name }</div>
             </div>
-            <Image src="https://picsum.photos/200/300" alt={"alt"} fill />
+            <Image src={topic.imgUrl} alt={"alt"} fill objectFit="cover" />
         </div>
     );
 };

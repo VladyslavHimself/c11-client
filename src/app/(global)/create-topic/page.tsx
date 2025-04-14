@@ -14,16 +14,17 @@ export default function CreateTopicPage() {
     const { createNewTopic } = useCreateNewTopicMutation(() => {
         topicNameInput.clearValue();
     });
+    const [imageFile, setImageFile] = React.useState<File|null>(null);
 
     return (
         <div className={styles['create-topic-page']}>
             <div className={styles['create-topic-page-wrapper']}>
                 <Heading title="Create new topic" />
                 <div className={styles['create-topic-page-upload-info']}>
-                    <CreateTopicImageUpload />
+                    <CreateTopicImageUpload setImage={setImageFile} />
                     <div className={styles['create-topic-page-upload-info-metadata']}>
                         <Input {...topicNameInput} placeholder="Topic name" />
-                        <Button onClick={() => createNewTopic({ name: topicNameInput.value!})} variant="accent" >Publish</Button>
+                        <Button onClick={() => createNewTopic(imageFile, topicNameInput.value)} variant="accent" >Publish</Button>
                     </div>
                 </div>
             </div>

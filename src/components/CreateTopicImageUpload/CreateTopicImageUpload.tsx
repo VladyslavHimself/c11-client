@@ -12,15 +12,17 @@ const dragBehaviourMap = {
 }
 
 
-export default function CreateTopicImageUpload() {
+export default function CreateTopicImageUpload({ setImage }: { setImage: React.Dispatch<React.SetStateAction<File>> }) {
     // TODO: Remove code duplication when main tasks are done
-    const [uploadedImage, setUploadedImage] = React.useState();
-    const onDropFile = React.useCallback((acceptedFiles) => {
+    const [uploadedPreviewImage, setUploadedPreviewImage] = React.useState();
+    const onDropFile = React.useCallback((acceptedFiles: File[]) => {
         const file = acceptedFiles[0];
+
         if (file && file.type.startsWith("image/")) {
-            setUploadedImage(URL.createObjectURL(file));
+            setImage(file);
+            setUploadedPreviewImage(URL.createObjectURL(file));
         }
-    }, []);
+    }, [setImage]);
 
     const { getRootProps, getInputProps, isDragActive, isDragReject, isDragAccept,} = useDropzone({
         onDrop: onDropFile,
@@ -43,7 +45,7 @@ export default function CreateTopicImageUpload() {
         <div data-drop-state={dragBehaviourState} {...getRootProps()} className={styles['create-topic-image-upload']}>
             <input {...getInputProps()} />
             {
-                !uploadedImage && (
+                !uploadedPreviewImage && (
                     <div className={styles['create-topic-image-upload-tile']}>
                         <UploadIcon />
                         <div className={styles['create-topic-image-upload-heading']}>
@@ -61,9 +63,9 @@ export default function CreateTopicImageUpload() {
                 )
 
             }
-            {uploadedImage && (
+            {uploadedPreviewImage && (
                 <div className={styles['create-topic-image-preview']}>
-                    <img src={uploadedImage} alt="" />
+                    <img src={uploadedPreviewImage} alt="" />
                 </div>
             )}
         </div>

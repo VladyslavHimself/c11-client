@@ -12,8 +12,17 @@ type TopicImage = {
 export type TopicResponseBody = {
     id: string
     name: string
-    image: TopicImage
-    images: number
+    imgWidth: number
+    imgHeight: number
+    imgSize: number
+    imgFormat: string
+    imgUrl: string
+    imgPlaceholder: string
+    imgHeightList: number[]
+    imgMimetype: string
+    createdAt: string
+    updatedAt: string
+    author: TopicAuthor
 }
 // TODO: Check similarities with UserData.
 type TopicAuthor = {
@@ -41,6 +50,7 @@ type FoundTopicResponse = {
 
 export type CreateTopicBody = {
     name: string,
+    image: File
 }
 
 export const TopicsAPI = {
@@ -67,8 +77,9 @@ export const TopicsAPI = {
         })
     },
 
-    createNewTopic(topicBody: CreateTopicBody) {
-        return api.post(`/api/v1/topics`, topicBody).then(({ data }: { data: TopicResponseBody }) => data).catch(err => {
+    createNewTopic(topic: FormData) {
+        console.log('topic',topic);
+        return api.post(`/api/v1/topics/upload`, topic ).then(({ data }: { data: TopicResponseBody }) => data).catch(err => {
             if (err.status === 401) return null;
             return err;
         })

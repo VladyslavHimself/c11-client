@@ -10,7 +10,7 @@ type Props = {
 };
 
 export default function TopicFrame({ topic, children, onClick }: React.PropsWithChildren<Props>) {
-    const { name } = topic;
+    const { name, imgUrl } = topic;
     return (
         <div className={'topic-frame'} onClick={() => isFunction(onClick) && onClick(topic)}>
             { children && (
@@ -19,7 +19,7 @@ export default function TopicFrame({ topic, children, onClick }: React.PropsWith
                 </div>
             )}
             <div className={styles['topic-frame-title']}>{name}</div>
-            <Image src={''} alt={name} fill objectFit="cover" />
+            <Image src={imgUrl} alt={name} fill objectFit="cover" />
         </div>
     );
 };
