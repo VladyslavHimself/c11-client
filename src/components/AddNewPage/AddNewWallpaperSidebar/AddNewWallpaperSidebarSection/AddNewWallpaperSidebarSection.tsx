@@ -27,6 +27,8 @@ export default function AddNewWallpaperSidebarSection({
 
                 {!isLoading && itemList.length && itemList?.map(item => {
                     const isSelected = !!selectedItems.find(selectedItem => selectedItem.id === item.id);
+                    console.log(selectedItems)
+
                     return (
                         <div key={item.id} className={styles['add-new-wallpaper-sidebar-section-item-wrapper']}>
                             <AddNewWallpaperSidebarSectionItem

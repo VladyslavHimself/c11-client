@@ -24,6 +24,10 @@ export default function AddNewPageProvider({ children, tagList, topicList }: Pro
     const [selectedTopic, setSelectedTopic] = React.useState<TopicResponseBody>(topicList[0]);
     const [selectedTags, setSelectedTags] = React.useState<any[]>([]);
 
+    React.useEffect(() => {
+        console.log(selectedTopic);
+    },[selectedTopic])
+
     return (
         <AddNewPageStateContext value={{ topicList, tagList, selectedTopic, selectedTags}}>
             <AddNewPageActionsContext value={{ setSelectedTopic, setSelectedTags }}>

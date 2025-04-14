@@ -6,7 +6,7 @@ import {TopicResponseBody} from "@/api/Topics";
 
 type Props = {
     isSelected: boolean;
-    onClick: () => void;
+    onClick: (item: unknown) => void;
     item: TopicResponseBody;
     isCompact: boolean;
 }
@@ -18,12 +18,12 @@ export default function AddNewWallpaperSidebarSectionItem({ isSelected, onClick,
              ${!isCompact ? styles['add-new-wallpaper-sidebar-section-item-extended'] : ''}
              `}
              data-is-selected={isSelected}
-             onClick={onClick}
+             onClick={() => onClick(item)}
              key={item.id}>
             {
-                !isCompact && item?.image && (
+                !isCompact && (
                     <div className={styles['add-new-wallpaper-sidebar-section-item-imageholder']}>
-                        <Image src={item?.image.url} width={51} height={51} alt={item.name} />
+                        <Image src={item.imgUrl} width={51} height={51} alt={item.name} />
                     </div>
 
                 )
