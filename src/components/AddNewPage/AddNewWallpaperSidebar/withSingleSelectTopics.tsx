@@ -32,10 +32,6 @@ function withSingleSelectTopics(NativeComponent: React.ComponentType<AddNewWallp
         }, [debouncedInput, data, topicList]);
 
 
-        React.useEffect(() => {
-            console.log(selectedTopic);
-        }, [selectedTopic, debouncedInput])
-
         return (
             <NativeComponent
                 itemList={filteredTopics}

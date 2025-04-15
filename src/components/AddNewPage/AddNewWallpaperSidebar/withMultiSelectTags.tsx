@@ -9,8 +9,8 @@ import {useAddNewPageActions, useAddNewPageStates} from "@/components/AddNewPage
 import AddNewWallpaperSidebarSection
     from "@/components/AddNewPage/AddNewWallpaperSidebar/AddNewWallpaperSidebarSection/AddNewWallpaperSidebarSection";
 import useDebouncedInput from "@/hooks/useDebouncedInput";
-import useTopicsSelect from "@/components/AddNewPage/AddNewWallpaperSidebar/useTopicsSelect";
-import {TopicResponseBody} from "@/api/Topics";
+import { Tag } from "@/api/Tags";
+import useTagsSelect from "@/components/AddNewPage/AddNewWallpaperSidebar/useTagsSelect";
 
 
 // TODO: Change to tags data
@@ -19,21 +19,21 @@ function withMultiselectTags(NativeComponent: React.ComponentType<AddNewWallpape
 
     return function TagsMultiselect() {
         const { debouncedInput, sourceInput } = useDebouncedInput();
-        const { data, loading } = useTopicsSelect(debouncedInput);
-        const { topicList, selectedTags } = useAddNewPageStates();
+        const { data, loading } = useTagsSelect(debouncedInput);
+        const { tagList, selectedTags } = useAddNewPageStates();
         const { setSelectedTags } = useAddNewPageActions();
 
-        function onSelectTag(topic: TopicResponseBody) {
+        function onSelectTag(tag: Tag) {
             setSelectedTags(prev => {
-                const exists = prev.some(item => item.id === topic.id);
-                return exists ? prev.filter(item => item.id !== topic.id) : [...prev, topic];
+                const exists = prev.some(item => item.id === tag.id);
+                return exists ? prev.filter(item => item.id !== tag.id) : [...prev, tag];
             });
         }
 
         const filteredTags = React.useMemo(() => {
-            if (!debouncedInput.trim()) return topicList;
+            if (!debouncedInput.trim()) return tagList.hits;
             return data;
-        }, [debouncedInput, data, topicList]);
+        }, [debouncedInput, data, tagList]);
 
         return <NativeComponent
             itemList={filteredTags}

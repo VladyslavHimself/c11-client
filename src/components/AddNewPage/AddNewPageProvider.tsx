@@ -3,6 +3,7 @@
 import React, {PropsWithChildren} from "react";
 import {AddNewPageProps} from "@/components/AddNewPage/AddNewPageProviders";
 import {TopicResponseBody} from "@/api/Topics";
+import {Tag} from "@/api/Tags";
 const AddNewPageStateContext = React.createContext<null|AddNewPageStateContext>(null);
 const AddNewPageActionsContext = React.createContext<null|AddNewPageActionsContext>(null);
 
@@ -22,11 +23,7 @@ type InheritedAddNewPageProps = AddNewPageProps;
 
 export default function AddNewPageProvider({ children, tagList, topicList }: PropsWithChildren<InheritedAddNewPageProps>) {
     const [selectedTopic, setSelectedTopic] = React.useState<TopicResponseBody>(topicList[0]);
-    const [selectedTags, setSelectedTags] = React.useState<any[]>([]);
-
-    React.useEffect(() => {
-        console.log(selectedTopic);
-    },[selectedTopic])
+    const [selectedTags, setSelectedTags] = React.useState<Tag[]>([]);
 
     return (
         <AddNewPageStateContext value={{ topicList, tagList, selectedTopic, selectedTags}}>

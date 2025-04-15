@@ -14,7 +14,6 @@ export default function DeleteImageButton({ wallpaperMetadata }: Props) {
     return (
         <Button onClick={e => {
             e.stopPropagation();
-            console.log('deleted wallpaper')
             deleteImage(id);
         }}>
             <TrashIcon style={{ color: "red" }} />

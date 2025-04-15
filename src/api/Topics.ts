@@ -78,7 +78,6 @@ export const TopicsAPI = {
     },
 
     createNewTopic(topic: FormData) {
-        console.log('topic',topic);
         return api.post(`/api/v1/topics/upload`, topic ).then(({ data }: { data: TopicResponseBody }) => data).catch(err => {
             if (err.status === 401) return null;
             return err;
