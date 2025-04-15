@@ -12,22 +12,26 @@ type AddNewPageStateContext = {
     selectedTopic: TopicResponseBody;
     tagList: any[]
     selectedTags: any[];
+    selectedImage: File|null,
 }
 
 type AddNewPageActionsContext = {
     setSelectedTopic: React.Dispatch<React.SetStateAction<TopicResponseBody>>;
     setSelectedTags: React.Dispatch<React.SetStateAction<any[]>>;
+    setSelectedImage: React.Dispatch<React.SetStateAction<null|File>>;
 }
 
 type InheritedAddNewPageProps = AddNewPageProps;
 
 export default function AddNewPageProvider({ children, tagList, topicList }: PropsWithChildren<InheritedAddNewPageProps>) {
+
+    const [selectedImage, setSelectedImage] = React.useState<File|null>(null);
     const [selectedTopic, setSelectedTopic] = React.useState<TopicResponseBody>(topicList[0]);
     const [selectedTags, setSelectedTags] = React.useState<Tag[]>([]);
 
     return (
-        <AddNewPageStateContext value={{ topicList, tagList, selectedTopic, selectedTags}}>
-            <AddNewPageActionsContext value={{ setSelectedTopic, setSelectedTags }}>
+        <AddNewPageStateContext value={{ topicList, tagList, selectedTopic, selectedImage, selectedTags}}>
+            <AddNewPageActionsContext value={{ setSelectedTopic, setSelectedImage, setSelectedTags }}>
                 { children }
             </AddNewPageActionsContext>
         </AddNewPageStateContext>

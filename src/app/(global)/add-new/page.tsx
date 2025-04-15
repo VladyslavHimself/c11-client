@@ -1,6 +1,8 @@
 import React from "react"
 import styles from '@/styles/add-new-page.module.scss';
 import AddNewWallpaperSidebar from "@/components/AddNewPage/AddNewWallpaperSidebar/AddNewWallpaperSidebar";
+import AddNewWallpaperImageUploadFrame
+    from "@/components/AddNewPage/AddNewWallpaperImageUploadFrame/AddNewWallpaperImageUploadFrame";
 
 export default function AddNewPage() {
 
@@ -8,8 +10,8 @@ export default function AddNewPage() {
             <div className={styles['add-new-page']}>
                 <div className={styles['add-new-page-content-wrapper']}>
                     <AddNewWallpaperSidebar />
-                    <div>
-                        {/*<AddNewWallpaperImageUploadFrame />*/}
+                    <div className={styles['add-new-page-right-section']}>
+                        <AddNewWallpaperImageUploadFrame />
                         {/*<AddNewWallpaperPublishButton />*/}
                     </div>
                 </div>

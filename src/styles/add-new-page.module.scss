@@ -2,5 +2,10 @@
 .add-new-page {
   @include pageLayout('add-new-page-content-wrapper', 20px 0) {
     display: flex;
+
+   .add-new-page-right-section {
+     width: 100%;
+     padding: 0 16px;
+   }
   }
 }
