@@ -3,6 +3,8 @@ import styles from '@/styles/add-new-page.module.scss';
 import AddNewWallpaperSidebar from "@/components/AddNewPage/AddNewWallpaperSidebar/AddNewWallpaperSidebar";
 import AddNewWallpaperImageUploadFrame
     from "@/components/AddNewPage/AddNewWallpaperImageUploadFrame/AddNewWallpaperImageUploadFrame";
+import AddNewWallpaperPublishButton
+    from "@/components/AddNewPage/AddNewWallpaperPublishButton/AddNewWallpaperPublishButton";
 
 export default function AddNewPage() {
 
@@ -12,7 +14,7 @@ export default function AddNewPage() {
                     <AddNewWallpaperSidebar />
                     <div className={styles['add-new-page-right-section']}>
                         <AddNewWallpaperImageUploadFrame />
-                        {/*<AddNewWallpaperPublishButton />*/}
+                        <AddNewWallpaperPublishButton />
                     </div>
                 </div>
             </div>

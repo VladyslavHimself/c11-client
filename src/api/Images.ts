@@ -79,6 +79,13 @@ export const ImagesAPI = {
         });
     },
 
+    uploadImage(image: FormData): Promise<WallpaperResponse> {
+        return api.post('/api/v1/images/upload', image ).then(({ data }: { data: WallpaperResponse }) => data).catch(err => {
+            if (err.status === 401) return null;
+            return err;
+        })
+    },
+
     deleteImage(imageId: string): Promise<void> {
         return api.delete(`/api/v1/images/${imageId}`);
     }
