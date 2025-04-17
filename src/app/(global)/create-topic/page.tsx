@@ -10,9 +10,9 @@ import * as React from "react";
 import useCreateNewTopicMutation from "@/apiHooks/useCreateNewTopicMutation";
 
 export default function CreateTopicPage() {
-    const topicNameInput = useInput('');
+    const {inputInnerProps, clearValue } = useInput('');
     const { createNewTopic } = useCreateNewTopicMutation(() => {
-        topicNameInput.clearValue();
+        clearValue();
     });
     const [imageFile, setImageFile] = React.useState<File|null>(null);
 
@@ -23,8 +23,8 @@ export default function CreateTopicPage() {
                 <div className={styles['create-topic-page-upload-info']}>
                     <CreateTopicImageUpload setImage={setImageFile} />
                     <div className={styles['create-topic-page-upload-info-metadata']}>
-                        <Input {...topicNameInput} placeholder="Topic name" />
-                        <Button onClick={() => createNewTopic(imageFile, topicNameInput.value)} variant="accent" >Publish</Button>
+                        <Input {...inputInnerProps} placeholder="Topic name" />
+                        <Button onClick={() => createNewTopic(imageFile, inputInnerProps.value)} variant="accent" >Publish</Button>
                     </div>
                 </div>
             </div>

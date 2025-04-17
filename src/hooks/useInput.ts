@@ -1,9 +1,14 @@
 import React from "react";
 
-export type InputReturnValues = {
+
+type InputInnerProps = {
     value: string;
     onChange: ({target}: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export type InputReturnValues = {
     clearValue: () => void;
+    inputInnerProps: InputInnerProps;
 }
 
 export default function useInput(initialValue: string =  ''): InputReturnValues {
@@ -17,5 +22,10 @@ export default function useInput(initialValue: string =  ''): InputReturnValues 
         setValue('');
     }
 
-    return { value, onChange: handleInputChange, clearValue};
+   const inputInnerProps = {
+        value,
+        onChange: handleInputChange
+   }
+
+    return { inputInnerProps, clearValue};
 }

@@ -9,7 +9,6 @@ import AddNewButton from "@/components/AddNewButton/AddNewButton";
 
 
 export default async function ProfilePage() {
-    // TODO: Refactor when the endpoint will have been fixed
     const userUploads = await ImagesAPI.getUserUploadedImages();
     const userCreatedTopics =  await TopicsAPI.getPopularTopics(10);
 
