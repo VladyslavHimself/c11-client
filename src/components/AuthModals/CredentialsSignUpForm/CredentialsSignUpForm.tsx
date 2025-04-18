@@ -9,7 +9,8 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import styles from './credentialsSignUpForm.module.scss';
 import {Button} from "@/components/ui/button";
 import {useRouter} from "next/navigation";
-import {revalidateLoginPath, signUpUserViaCredentials} from "@/actions/auth";
+import { signUpUserViaCredentials } from "@/actions/auth";
+import { revalidateAllPathes } from "@/actions/pathesRevalidators";
 import {signIn} from "next-auth/react";
 
 const signUpFormSchema = z.object({
@@ -50,7 +51,7 @@ export function CredentialsSignUpForm() {
                         email: values.email,
                         password: values.password,
                     })
-                    await revalidateLoginPath();
+                    await revalidateAllPathes();
                     router.back();
                 }
             })}>

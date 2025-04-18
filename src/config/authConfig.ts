@@ -2,6 +2,8 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import {AuthAPI, JWTResponse} from "@/api/auth";
 import {Account, AuthOptions} from "next-auth";
+import {jwtDecode} from "jwt-decode";
+import axios from "axios";
 
 export const authConfig: AuthOptions = {
     providers: [
@@ -31,25 +33,25 @@ export const authConfig: AuthOptions = {
     secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
         async jwt({ account, token, user}) {
-            if (user && account?.provider === 'credentials') {
+            if (isUserLoggedFirstTime(account, user) && account?.provider === 'credentials') {
                 token.id = user.accessToken;
                 token.refresh = user.refreshToken
+
             }
 
-            if (account?.provider === "google") {
-                const { accessToken, refreshToken } = await authenticateUserViaGoogle(account);
-
-                token.id = accessToken;
-                token.refresh = refreshToken;
+            if (token?.id) {
+               const decodedToken = jwtDecode(token?.id);
+               token.expires = decodedToken?.exp * 1000;
             }
 
-            return {...token };
+            if (new Date() < token?.expires) return token;
+
+            return refreshAccessToken(token);
+
         },
         async session({ session, token }) {
-
             if (token) {
                 session.token = token.id as string;
-                // TODO: Optional. Add user data, if backend will pass data.
                 session.user = {};
             }
 
@@ -58,11 +60,35 @@ export const authConfig: AuthOptions = {
     },
 }
 
-async function authenticateUserViaGoogle(account: Account): Promise<JWTResponse> {
-    const { data } = await AuthAPI.loginUserViaGoogle(account.access_token!);
 
-    return {
-        accessToken: data.accessToken,
-        refreshToken: data.refreshToken
+function isUserLoggedFirstTime(account, user) {
+    return account && user;
+}
+
+async function refreshAccessToken(token) {
+    try {
+        const res = await axios.post(
+            'http://localhost:8000/api/v1/auth/refresh', {},
+            {
+                headers: {
+                    Authorization: `Bearer ${token.refresh}`,
+                },
+                withCredentials: true,
+            }
+        );
+
+
+        if (res.status !== 201) {
+            console.warn('Unexpected status:', res.status);
+        }
+
+        return {
+            ...token,
+            id: res.data.accessToken,
+        };
+
+    } catch (e) {
+        console.error('Couldn\'t refresh access token', e.message || e);
+        return token;
     }
 }

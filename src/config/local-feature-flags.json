@@ -1,3 +1,4 @@
 {
-  "settingsPage": false
+  "settingsPage": false,
+  "isGoogleAuthEnabled": false
 }
