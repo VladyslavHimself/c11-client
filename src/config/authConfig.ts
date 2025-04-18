@@ -1,7 +1,7 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
-import {AuthAPI, JWTResponse} from "@/api/auth";
-import {Account, AuthOptions} from "next-auth";
+import {AuthAPI} from "@/api/auth";
+import {AuthOptions} from "next-auth";
 import {jwtDecode} from "jwt-decode";
 import axios from "axios";
 
@@ -42,6 +42,7 @@ export const authConfig: AuthOptions = {
             if (token?.id) {
                const decodedToken = jwtDecode(token?.id);
                token.expires = decodedToken?.exp * 1000;
+               token.email = decodedToken.email
             }
 
             if (new Date() < token?.expires) return token;
@@ -52,9 +53,7 @@ export const authConfig: AuthOptions = {
         async session({ session, token }) {
             if (token) {
                 session.token = token.id as string;
-                session.user = {};
             }
-
             return session;
         },
     },

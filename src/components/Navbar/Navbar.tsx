@@ -18,7 +18,8 @@ const generateRoutes = () => [
         title: "Add new",
         icon: StarsIcon,
         link: "/add-new",
-        action: () => {}
+        action: () => {},
+        authenticatedOnly: true,
     },
     {
         title: "Explore",
@@ -30,23 +31,26 @@ const generateRoutes = () => [
         title: "Favourites",
         icon: FolderIcon,
         link: "/favourites",
-        action: () => {}
+        action: () => {},
+        authenticatedOnly: true,
     },
     {
         title: "Subscriptions",
         icon: StarsIcon,
         link: "/subscriptions",
         action: () => {},
+        authenticatedOnly: true,
     },
 ]
 
-export default function Navbar() {
+export default function Navbar({ isAuthenticated }: { isAuthenticated: boolean }) {
     const pathname = usePathname();
     return (
         <div className={styles.navbar}>
             {
-                generateRoutes().map(({ title, icon, link, action}) => {
-                    return (
+                generateRoutes().map(({ title, icon, link, action, authenticatedOnly }) => {
+                    const isShouldBeShown = !authenticatedOnly || (authenticatedOnly && isAuthenticated);
+                    return isShouldBeShown && (
                         <NavbarItem
                             key={title}
                             Icon={icon}
