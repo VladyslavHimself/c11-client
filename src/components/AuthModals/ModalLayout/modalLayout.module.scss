@@ -11,4 +11,9 @@
 
     cursor: pointer;
     z-index: 100;
+
+    &+& {
+        // TODO: Later add route modals stack management.
+        z-index: 99;
+    }
 }

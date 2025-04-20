@@ -13,7 +13,7 @@ type Props = {
 
 // TODO: Optimize with template building pattern ("Prototype" pattern will have been used)
 export function WallpaperFrameOwnerPreviewMenu({ wallpaperMetadata }: Props) {
-    const { width, height, url, filename } = wallpaperMetadata;
+    const { width, height, url, filename, format } = wallpaperMetadata;
     return (
         <>
             <div className={styles['wallpaper-frame-strip']}>
@@ -21,7 +21,7 @@ export function WallpaperFrameOwnerPreviewMenu({ wallpaperMetadata }: Props) {
                 <div className={styles['wallpaper-frame-strip-divider']}>
                     <ResolutionWallpaperInformation width={width} height={height} />
                     <div className={styles['wallpaper-information']}>
-                        PNG
+                        {format}
                     </div>
                 </div>
             </div>
@@ -29,7 +29,6 @@ export function WallpaperFrameOwnerPreviewMenu({ wallpaperMetadata }: Props) {
             <div className={styles['wallpaper-frame-strip']}>
                 <div className={styles['wallpaper-frame-strip-divider']}>
                     <LikeButton wallpaperMetadata={wallpaperMetadata} />
-
                 </div>
 
                 <MiniatureDownloadButton link={url} filename={filename} />

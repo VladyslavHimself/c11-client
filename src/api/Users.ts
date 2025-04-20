@@ -46,5 +46,12 @@ export const UsersAPI = {
             if (err.status === 401) return null;
             return err;
         });
+    },
+
+    findUserById(userId: string) {
+        return api.get(`/api/v1/users/${userId}`).then(({ data }: { data: UserResponse}) => data).catch(err => {
+            if (err.status === 401) return null;
+            return err;
+        });
     }
 }

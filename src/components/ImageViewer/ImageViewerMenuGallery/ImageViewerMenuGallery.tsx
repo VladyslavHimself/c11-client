@@ -9,7 +9,6 @@ type Props = {
     topicName: string,
 }
 
-// TODO: Remove slice() from JSX when "getPopular" endpoint would be done on server
 export default function ImageViewerMenuGallery({ suggestedWallpapers, topicName }: Props) {
 
     return (

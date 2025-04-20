@@ -20,7 +20,9 @@ export type WallpaperResponse = {
     isPublished: boolean
     topicId: string
     createdAt: string
-    updatedAt: string
+    updatedAt: string,
+    isLiked?: boolean,
+    isFavorite?: boolean,
     tags: string[]
 }
 
@@ -33,7 +35,6 @@ export type FoundImagesResponse = {
     "totalPages": number,
     "totalHits": number
 }
-
 export type UserReactionToImage = 'LIKE' | 'DISLIKE' | 'FAVORITE' | 'UNFAVORITE'
 
 

@@ -2,5 +2,8 @@
     width: 195px;
     display: flex;
     margin-top: 5px;
-    justify-content: space-between;
+
+    > * {
+        margin-left: 5px;
+    }
 }

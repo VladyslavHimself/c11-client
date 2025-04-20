@@ -18,8 +18,9 @@ type Props = {
 
 export default function HeaderSearchbar({ routePath }: Props) {
     const searchParams = useSearchParams();
+    const searchInputDefaultValue = searchParams.get(SEARCH_QUERY) || ''
     const router = useRouter();
-    const { inputInnerProps } = useInput()
+    const { inputInnerProps } = useInput(searchInputDefaultValue);
 
     // TODO: Make service functions
     function onSearchHandler() {
@@ -30,12 +31,11 @@ export default function HeaderSearchbar({ routePath }: Props) {
         return router.push(window.location.pathname + `?${SEARCH_QUERY}=${inputInnerProps.value}`);
     }
 
-
     return (
         <div className={styles['header']}>
             <div className={styles['header-searchbar']}>
                 <SearchIcon />
-                <Input defaultValue={searchParams.get(SEARCH_QUERY) || ''} placeholder="Search..." {...inputInnerProps} />
+                <Input placeholder="Search..." {...inputInnerProps} />
             </div>
             <Button variant="accent" size="md" disabled={!inputInnerProps.value} onClick={onSearchHandler}>Search</Button>
         </div>

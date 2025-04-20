@@ -13,8 +13,7 @@ type Props = {
 }
 
 export default function WallpaperFrameViewerPreviewMenu({ wallpaperMetadata }: Props) {
-    const { format, width, height } = wallpaperMetadata;
-
+    const { format, width, height } = wallpaperMetadata
     return (
         <>
             <div className={styles['wallpaper-frame-strip']}>

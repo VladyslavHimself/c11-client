@@ -3,21 +3,33 @@ import LikeIcon from "../../../public/LikeIcon";
 import {Button} from "@/components/ui/button";
 import {WallpaperResponse} from "@/api/Images";
 import {useUserImageReactionMutation} from "@/apiHooks/useUserImageReactionMutation";
+import withAuthenticatedProtection from "@/components/withAuthenticatedProtection/withAuthenticatedProtection";
+import {isBoolean} from "lodash";
+import {DISLIKE, LIKE} from "@/constants/userReactions.constants";
 
 type Props = {
-    wallpaperMetadata: WallpaperResponse
+    wallpaperMetadata: WallpaperResponse,
+    isAuthenticatedAction: boolean
 };
 
-export default function LikeButton({ wallpaperMetadata }: Props) {
+function LikeButton({ wallpaperMetadata, isAuthenticatedAction }: Props) {
     const { setUserReactionToImage } = useUserImageReactionMutation()
-    const { id, likes } = wallpaperMetadata;
+    const { id, likes, isLiked } = wallpaperMetadata;
+
+    const onSetReactionToImageHandler = (e) => {
+        e.stopPropagation();
+        if (!isBoolean(isLiked)) return;
+        setUserReactionToImage(id, isLiked ? DISLIKE : LIKE);
+    }
 
     return (
         <Button onClick={e => {
-            e.stopPropagation();
-            setUserReactionToImage(id, 'DISLIKE');
+            // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+            isAuthenticatedAction && onSetReactionToImageHandler(e);
         }}>
             <LikeIcon /> {likes}
         </Button>
     );
 };
+
+export default withAuthenticatedProtection(LikeButton);
