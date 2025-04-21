@@ -14,11 +14,14 @@ export function useDeleteImageMutation() {
         setError(null);
 
         try {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
             const response = await axios.delete(PROXY_ENDPOINT, { imageId });
             setData(response.data);
 
         } catch (err) {
-            setError(err?.response?.data?.error || "Something went wrong");
+            console.error(err);
+            setError("Something went wrong");
         } finally {
             revalidateAllPathes();
             setLoading(false);

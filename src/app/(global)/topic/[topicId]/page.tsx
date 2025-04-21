@@ -7,13 +7,14 @@ import HeaderSearchbar from "@/components/HeaderSearchbar/HeaderSearchbar";
 import {TopicsAPI} from "@/api/Topics";
 import BackButton from "@/components/ExploreButton/ExploreButton";
 
-type Params = { topicId: string; }
-
 type Props = {
-    params: Params;
+    params: Promise<{
+        topicId: string;
+    }>
 }
 
-export default async function TopicPage({ params }: Props) {
+export default async function TopicPage(props: Props) {
+    const params = await props.params;
     const { topicId } = params;
 
     const foundWallpapers = await ImagesAPI.searchImages(50, topicId);

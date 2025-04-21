@@ -5,7 +5,8 @@ type ApiParams = {
     topicId: string;
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: ApiParams }) {
+export async function DELETE(req: NextRequest, props: { params: Promise<ApiParams> }) {
+    const params = await props.params;
     try {
         await TopicsAPI.deleteTopic(params.topicId);
 

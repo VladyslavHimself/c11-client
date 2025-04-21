@@ -20,8 +20,9 @@ export default function useAddNewWallpaperMutation(callback: () => void) {
 
             const response = await axios.post("/api/add-new-wallpaper", formData);
             setData(response.data);
-        } catch (err) {
-            setError(err?.response?.data?.error || "Something went wrong");
+        } catch(e) {
+            console.error(e);
+            setError("Something went wrong");
         } finally {
             revalidateAllPathes();
             setLoading(false);

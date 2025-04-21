@@ -5,7 +5,7 @@ import ImageViewerActionsBar from "@/components/ImageViewer/ImageViewerActionsBa
 import ImageViewerAuthorProfile from "@/components/ImageViewer/ImageViewerAuthorProfile/ImageViewerAuthorProfile";
 import ImageViewerInfoTable from "@/components/ImageViewer/ImageViewerInfoTable/ImageViewerInfoTable";
 import ImageViewerMenuGallery from "@/components/ImageViewer/ImageViewerMenuGallery/ImageViewerMenuGallery";
-import {TopicResponseBody} from "@/api/Topics";
+import {FoundTopicResponse} from "@/api/Topics";
 import ExtendedDownloadButton from "@/components/ImageViewer/ExtendedDownloadButton/ExtendedDownloadButton";
 import {UserResponse} from "@/api/Users";
 
@@ -14,7 +14,7 @@ import {UserResponse} from "@/api/Users";
 type Props = {
     wallpaper: WallpaperResponse
     wallpapers: WallpaperResponse[]
-    topic: TopicResponseBody,
+    topic: FoundTopicResponse,
     author: UserResponse
 }
 

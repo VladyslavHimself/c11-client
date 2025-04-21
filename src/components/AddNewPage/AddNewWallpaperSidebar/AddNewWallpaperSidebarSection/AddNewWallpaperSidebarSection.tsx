@@ -1,7 +1,5 @@
 import React from "react";
 import {Input} from "@/components/ui/input";
-import {TopicResponseBody} from "@/api/Topics";
-
 import {
     AddNewWallpaperSidebarSectionTypes
 } from "@/components/AddNewPage/AddNewWallpaperSidebar/AddNewWallpaperSidebarSection/addNewWallpaperSidebarSection.types";
@@ -10,15 +8,21 @@ import AddNewWallpaperSidebarSectionItem
 
 import styles from "./addNewWallpaperSidebarSection.module.scss";
 
-export default function AddNewWallpaperSidebarSection({
+type RequiredImageProps = {
+    id: string;
+    name: string;
+    imgUrl?: string;
+}
+
+export default function AddNewWallpaperSidebarSection<T extends RequiredImageProps>({
   itemList,
   isLoading,
   onClick,
   searchPlaceholder,
   searchProperties,
   selectedItems,
-  isCompact,
-}: AddNewWallpaperSidebarSectionTypes<TopicResponseBody>) {
+  isCompact = false,
+}: AddNewWallpaperSidebarSectionTypes<T>) {
 
     return (
         <div className={styles['add-new-wallpaper-sidebar-section']}>
@@ -30,7 +34,7 @@ export default function AddNewWallpaperSidebarSection({
 
                     return (
                         <div key={item.id} className={styles['add-new-wallpaper-sidebar-section-item-wrapper']}>
-                            <AddNewWallpaperSidebarSectionItem
+                            <AddNewWallpaperSidebarSectionItem<T>
                                 key={item.id}
                                 item={item}
                                 onClick={onClick}

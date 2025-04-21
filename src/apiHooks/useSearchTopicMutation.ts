@@ -18,7 +18,8 @@ export function useSearchTopicMutation() {
             const { data } = await axios.get(getProxyEndpoint(topic));
             setData(data.hits);
         } catch (err) {
-            setError(err?.response?.data?.error || "Something went wrong");
+            console.error(err);
+            setError("Something went wrong");
         } finally {
             revalidateAllPathes();
             setLoading(false);

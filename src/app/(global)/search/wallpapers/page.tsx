@@ -6,16 +6,15 @@ import {ImagesAPI} from "@/api/Images";
 import WallpapersGallery from "@/components/WallpapersGallery/WallpapersGallery";
 
 type Params = {
-    searchParams: {
+    searchParams: Promise<{
         query: string;
-    }
+    }>
 }
 
-export default async function SearchWallpapersPage({ searchParams }: Params) {
+export default async function SearchWallpapersPage(props: Params) {
+    const searchParams = await props.searchParams;
     const searchParam = await searchParams.query;
     const foundImages = await ImagesAPI.searchImages(99, searchParam);
-
-    console.log(foundImages);
 
     return (
         <div className={styles['search-wallpapers-page']}>

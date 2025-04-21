@@ -10,15 +10,15 @@ import {FAVORITE, UNFAVORITE} from "@/constants/userReactions.constants";
 
 type Props = {
     wallpaperMetadata: WallpaperResponse
-    isAuthenticatedAction: boolean;
+    isAuthenticatedAction?: boolean;
 };
 
 function FavouritesButton({ wallpaperMetadata, isAuthenticatedAction }: Props) {
     const { setUserReactionToImage } = useUserImageReactionMutation();
-    const { id, isFavorite } = wallpaperMetadata;
+    const { id, isFavorite } = wallpaperMetadata!;
 
 
-    const onSetReactionToImageHandler = (e) => {
+    const onSetReactionToImageHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.stopPropagation();
         if (!isBoolean(isFavorite)) return;
         setUserReactionToImage(id, isFavorite ? UNFAVORITE : FAVORITE);
@@ -34,4 +34,4 @@ function FavouritesButton({ wallpaperMetadata, isAuthenticatedAction }: Props) {
     );
 }
 
-export default withAuthenticatedProtection(FavouritesButton);
+export default withAuthenticatedProtection<Props>(FavouritesButton);

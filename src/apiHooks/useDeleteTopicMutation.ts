@@ -18,7 +18,8 @@ export function useDeleteTopicMutation() {
             setData(response.data);
 
         } catch (err) {
-            setError(err?.response?.data?.error || "Something went wrong");
+            console.error(err);
+            setError( "Something went wrong");
         } finally {
             revalidateAllPathes();
             setLoading(false);

@@ -31,7 +31,8 @@ export default function WallpaperCarousel({ wallpapers }: Props) {
             <div className={styles['prev-button-placement']}>
                 <CarouselNavigationButton
                     isHidden={carouselIndex === 0}
-                    action={listBackward}
+                    // TODO: Investigate why listBackward defines as number | () => void
+                    action={listBackward as () => void}
                 >
                     <PrevIcon />
                 </CarouselNavigationButton>
@@ -40,7 +41,8 @@ export default function WallpaperCarousel({ wallpapers }: Props) {
             <div className={styles['next-button-placement']}>
                 <CarouselNavigationButton
                     isHidden={carouselIndex === CAROUSEL_LIMIT}
-                    action={listForward}
+                    // TODO: Investigate why listForward defines as number | () => void
+                    action={listForward as () => void}
                 >
                     <NextIcon />
                 </CarouselNavigationButton>
@@ -50,6 +52,7 @@ export default function WallpaperCarousel({ wallpapers }: Props) {
                         dragConstraints={{left: 0, right: 0,}}
                         animate={{translateX: -carouselIndex * TRANSFORM_STEP}}
                         transition={{duration: .5,}}
+                        // @ts-expect-error while drag is not supported by the "motion.div" component.
                         whileDrag={() => { isCarouselDragging = true; }}
                         onDragEnd={() => { isCarouselDragging = false; }}
             >

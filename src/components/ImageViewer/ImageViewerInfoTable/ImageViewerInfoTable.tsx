@@ -5,11 +5,11 @@ import ImageViewerInfoTableTags
     from "@/components/ImageViewer/ImageViewerInfoTable/ImageViewerInfoTableTags/ImageViewerInfoTableTags";
 import dayjs from "dayjs";
 import {WallpaperResponse} from "@/api/Images";
-import {TopicResponseBody} from "@/api/Topics";
+import {FoundTopicResponse} from "@/api/Topics";
 
 type Props = {
     wallpaper: WallpaperResponse,
-    topic: TopicResponseBody,
+    topic: FoundTopicResponse,
     tags: string[]
 }
 

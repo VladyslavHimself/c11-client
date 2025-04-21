@@ -8,15 +8,15 @@ import {isBoolean} from "lodash";
 import {DISLIKE, LIKE} from "@/constants/userReactions.constants";
 
 type Props = {
-    wallpaperMetadata: WallpaperResponse,
-    isAuthenticatedAction: boolean
+    wallpaperMetadata?: WallpaperResponse,
+    isAuthenticatedAction?: boolean
 };
 
-function LikeButton({ wallpaperMetadata, isAuthenticatedAction }: Props) {
-    const { setUserReactionToImage } = useUserImageReactionMutation()
-    const { id, likes, isLiked } = wallpaperMetadata;
+function LikeButton({wallpaperMetadata, isAuthenticatedAction}: Props) {
+    const {setUserReactionToImage} = useUserImageReactionMutation()
+    const {id, likes, isLiked} = wallpaperMetadata!;
 
-    const onSetReactionToImageHandler = (e) => {
+    const onSetReactionToImageHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
         if (!isBoolean(isLiked)) return;
         setUserReactionToImage(id, isLiked ? DISLIKE : LIKE);
@@ -30,6 +30,6 @@ function LikeButton({ wallpaperMetadata, isAuthenticatedAction }: Props) {
             <LikeIcon /> {likes}
         </Button>
     );
-};
+}
 
-export default withAuthenticatedProtection(LikeButton);
+export default withAuthenticatedProtection<Props>(LikeButton);

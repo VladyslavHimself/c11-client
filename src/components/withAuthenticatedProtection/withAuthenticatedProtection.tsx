@@ -2,24 +2,20 @@ import {isFunction} from "lodash";
 import {useSession} from "next-auth/react";
 import {useRouter} from "next/navigation";
 import React from "react";
-import {WallpaperResponse} from "@/api/Images";
 
 
 // TODO: Make flexible
-type ExpectedComponentProps = {
-    isAuthenticatedAction: boolean,
-    wallpaperMetadata?: WallpaperResponse,
-}
+type RequiredProtectionProps = { isAuthenticatedAction?: boolean }
 
-export default function withAuthenticatedProtection(Component: React.ComponentType<ExpectedComponentProps>) {
+export default function withAuthenticatedProtection<T extends RequiredProtectionProps>(Component: React.ComponentType<T>) {
     if (!isFunction(Component)) throw new Error("HOC must have a Component");
-    return function AuthenticatedProtection(props: Omit<ExpectedComponentProps, 'isAuthenticatedAction'>) {
+    return function AuthenticatedProtection(props: T) {
         const router = useRouter();
         const { status } = useSession();
 
         const isAuthenticatedAction = status === "authenticated";
 
-        const onOpenLoginModal = (e) => {
+        const onOpenLoginModal = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
             e.stopPropagation();
             router.push("/sign-in");
         }
@@ -32,6 +28,5 @@ export default function withAuthenticatedProtection(Component: React.ComponentTy
                 <Component {...props} isAuthenticatedAction={isAuthenticatedAction}/>
             </div>
         )
-
     }
 }

@@ -2,7 +2,7 @@ import {ImagesAPI} from "@/api/Images";
 import {NextResponse} from "next/server";
 
 
-export async function DELETE(req: Request): Promise<void> {
+export async function DELETE(req: Request): Promise<NextResponse<{ success: boolean }>> {
     try {
         const { imageId } = await req.json();
         await ImagesAPI.deleteImage(imageId);

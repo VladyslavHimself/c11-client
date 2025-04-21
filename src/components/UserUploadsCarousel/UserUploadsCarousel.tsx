@@ -30,6 +30,7 @@ export default function UserUploadsCarousel({ userUploads }: Props) {
                     drag="x"
                     dragConstraints={dragConstraints}
                     ref={carouselInnerRef}
+                    // @ts-expect-error while drag is not supported by the "motion.div" component.
                     whileDrag={() => { isCarouselDragging = true; }}
                     onDragEnd={() => { isCarouselDragging = false; }}
                     style={{display: "flex", alignItems: "center"}}>

@@ -39,7 +39,7 @@ type TopicAuthor = {
 }
 
 // TODO: Create commmon types and move entities like "createdAt", "updatedAt" into them
-type FoundTopicResponse = {
+export type FoundTopicResponse = {
     id: string
     name: string
     image: TopicImage,
@@ -64,7 +64,7 @@ export const TopicsAPI = {
     },
 
     getTopicById(topicId: string): Promise<FoundTopicResponse> {
-        return api.get(`/api/v1/topics/${topicId}`).then(({ data }: { data: TopicResponseBody[] }) => data).catch(err => {
+        return api.get(`/api/v1/topics/${topicId}`).then(({ data }: { data: FoundTopicResponse }) => data).catch(err => {
             if (err.status === 401) return null;
             return err;
         })

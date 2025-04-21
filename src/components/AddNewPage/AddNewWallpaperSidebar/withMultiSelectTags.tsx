@@ -9,7 +9,7 @@ import {useAddNewPageActions, useAddNewPageStates} from "@/components/AddNewPage
 import AddNewWallpaperSidebarSection
     from "@/components/AddNewPage/AddNewWallpaperSidebar/AddNewWallpaperSidebarSection/AddNewWallpaperSidebarSection";
 import useDebouncedInput from "@/hooks/useDebouncedInput";
-import { Tag } from "@/api/Tags";
+import {Tag} from "@/api/Tags";
 import useTagsSelect from "@/components/AddNewPage/AddNewWallpaperSidebar/useTagsSelect";
 
 
@@ -49,4 +49,4 @@ function withMultiselectTags(NativeComponent: React.ComponentType<AddNewWallpape
     }
 }
 
-export const AddNewWallpaperTagsMultiselect = withMultiselectTags(AddNewWallpaperSidebarSection);
+export const AddNewWallpaperTagsMultiselect = withMultiselectTags(AddNewWallpaperSidebarSection<Tag>);

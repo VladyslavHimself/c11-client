@@ -4,7 +4,7 @@ import {revalidateAllPathes} from "@/actions/pathesRevalidators";
 import {TopicResponseBody} from "@/api/Topics";
 
 export default function useCreateNewTopicMutation(callback: () => void) {
-    const [data, setData] = React.useState<TopicResponseBody>(null);
+    const [data, setData] = React.useState<TopicResponseBody>();
     const [loading, setLoading] = React.useState(false);
     const [error, setError] = React.useState<string | null>(null);
 
@@ -20,7 +20,8 @@ export default function useCreateNewTopicMutation(callback: () => void) {
             const response = await axios.post("/api/create-new-topic", formData);
             setData(response.data);
         } catch (err) {
-            setError(err?.response?.data?.error || "Something went wrong");
+            console.error(err);
+            setError("Something went wrong");
         } finally {
             revalidateAllPathes();
             setLoading(false);

@@ -24,7 +24,7 @@ export default function CreateTopicPage() {
                     <CreateTopicImageUpload setImage={setImageFile} />
                     <div className={styles['create-topic-page-upload-info-metadata']}>
                         <Input {...inputInnerProps} placeholder="Topic name" />
-                        <Button onClick={() => createNewTopic(imageFile, inputInnerProps.value)} variant="accent" >Publish</Button>
+                        <Button onClick={() => createNewTopic(imageFile as File, inputInnerProps.value)} variant="accent" >Publish</Button>
                     </div>
                 </div>
             </div>

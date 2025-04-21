@@ -22,6 +22,8 @@ export default function AddNewWallpaperImageUploadFrame() {
 
         if (file && file.type.startsWith("image/")) {
             setSelectedImage(file);
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
             setUploadedPreviewImage(URL.createObjectURL(file));
         }
     }, [setSelectedImage]);

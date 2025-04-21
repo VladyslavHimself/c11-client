@@ -47,4 +47,4 @@ function withSingleSelectTopics(NativeComponent: React.ComponentType<AddNewWallp
     }
 }
 
-export const AddNewWallpaperTopicSelect = withSingleSelectTopics(AddNewWallpaperSidebarSection);
+export const AddNewWallpaperTopicSelect = withSingleSelectTopics(AddNewWallpaperSidebarSection<TopicResponseBody>);

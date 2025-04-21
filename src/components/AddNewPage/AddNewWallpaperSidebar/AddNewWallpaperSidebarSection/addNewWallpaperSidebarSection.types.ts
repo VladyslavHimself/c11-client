@@ -11,5 +11,5 @@ export interface AddNewWallpaperSidebarSectionTypes<T> extends NativeProps<T> {
     title: string;
     searchPlaceholder: string;
     searchProperties: InputInnerProps,
-    isCompact: boolean
+    isCompact?: boolean
 }

@@ -1,20 +1,22 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import {AuthAPI} from "@/api/auth";
-import {AuthOptions} from "next-auth";
+import {Account, AuthOptions, User} from "next-auth";
 import {jwtDecode} from "jwt-decode";
-import axios from "axios";
+import axios, {AxiosError} from "axios";
+import {AdapterUser} from "next-auth/adapters";
+import { JWT } from "next-auth/jwt";
 
 export const authConfig: AuthOptions = {
     providers: [
         CredentialsProvider({
             name: "Custom credentials",
             credentials: {
-                email: { label: "Email", type: "text"},
-                password: { label: "Password", type: "password"}
+                email: {label: "Email", type: "text"},
+                password: {label: "Password", type: "password"}
             },
             async authorize(credentials) {
-                const { status, data } = await AuthAPI.loginUser({
+                const {status, data} = await AuthAPI.loginUser({
                     email: credentials!.email,
                     password: credentials!.password
                 }).then(res => res);
@@ -29,10 +31,10 @@ export const authConfig: AuthOptions = {
 
         })
     ],
-    session: { strategy: "jwt" },
+    session: {strategy: "jwt"},
     secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
-        async jwt({ account, token, user}) {
+        async jwt({account, token, user}) {
             if (isUserLoggedFirstTime(account, user) && account?.provider === 'credentials') {
                 token.id = user.accessToken;
                 token.refresh = user.refreshToken
@@ -40,17 +42,17 @@ export const authConfig: AuthOptions = {
             }
 
             if (token?.id) {
-               const decodedToken = jwtDecode(token?.id);
-               token.expires = decodedToken?.exp * 1000;
-               token.email = decodedToken.email
+                const decodedToken = jwtDecode(token.id as string);
+                token.expires = decodedToken!.exp! * 1000;
+                token.email = decodedToken.email
             }
 
-            if (new Date() < token?.expires) return token;
+            if (new Date() < token.expires!) return token;
 
             return refreshAccessToken(token);
 
         },
-        async session({ session, token }) {
+        async session({session, token}) {
             if (token) {
                 session.token = token.id as string;
             }
@@ -60,11 +62,11 @@ export const authConfig: AuthOptions = {
 }
 
 
-function isUserLoggedFirstTime(account, user) {
+function isUserLoggedFirstTime(account: null | Account, user: User | AdapterUser) {
     return account && user;
 }
 
-async function refreshAccessToken(token) {
+async function refreshAccessToken(token: JWT) {
     try {
         const res = await axios.post(
             'http://localhost:8000/api/v1/auth/refresh', {},
@@ -87,7 +89,8 @@ async function refreshAccessToken(token) {
         };
 
     } catch (e) {
-        console.error('Couldn\'t refresh access token', e.message || e);
+        const axiosError = e as AxiosError;
+        console.error('Couldn\'t refresh access token', axiosError.message || e);
         return token;
     }
 }

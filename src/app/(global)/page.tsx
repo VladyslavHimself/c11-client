@@ -14,7 +14,7 @@ export default async function HomePage() {
 
     return (
       <div className={styles['home-page']}>
-          <HeaderSearchbar routePath={'/explore'} />
+          <HeaderSearchbar />
           <div className={styles['home-page-content-wrapper']}>
               <div className={styles['popular-wallpapers-section']}>
                   <Heading title="Popular" />

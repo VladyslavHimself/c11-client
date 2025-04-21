@@ -12,7 +12,7 @@ const dragBehaviourMap = {
 }
 
 
-export default function CreateTopicImageUpload({ setImage }: { setImage: React.Dispatch<React.SetStateAction<File>> }) {
+export default function CreateTopicImageUpload({ setImage }: { setImage: React.Dispatch<React.SetStateAction<File | null>> }) {
     // TODO: Remove code duplication when main tasks are done
     const [uploadedPreviewImage, setUploadedPreviewImage] = React.useState();
     const onDropFile = React.useCallback((acceptedFiles: File[]) => {
@@ -20,6 +20,8 @@ export default function CreateTopicImageUpload({ setImage }: { setImage: React.D
 
         if (file && file.type.startsWith("image/")) {
             setImage(file);
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
             setUploadedPreviewImage(URL.createObjectURL(file));
         }
     }, [setImage]);

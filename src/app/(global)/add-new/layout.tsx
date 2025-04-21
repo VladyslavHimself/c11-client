@@ -17,7 +17,7 @@ export default async function AddNewPageLayout({ children }: Readonly<{ children
     const tagList = await TagsApi.searchTags(undefined, 9);
 
     return (
-        <AddNewPageProviders topicList={topicList} tagList={tagList}>
+        <AddNewPageProviders topicList={topicList} tagList={tagList!}>
             {children}
         </AddNewPageProviders>
     );

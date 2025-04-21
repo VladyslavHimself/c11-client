@@ -3,7 +3,7 @@
 import React, {PropsWithChildren} from "react";
 import {AddNewPageProps} from "@/components/AddNewPage/AddNewPageProviders";
 import {TopicResponseBody} from "@/api/Topics";
-import {Tag} from "@/api/Tags";
+import {SearchTagsResponse, Tag} from "@/api/Tags";
 import useAddNewWallpaperMutation from "@/apiHooks/useAddNewWallpaperMutation";
 import {useRouter} from "next/navigation";
 const AddNewPageStateContext = React.createContext<null|AddNewPageStateContext>(null);
@@ -12,7 +12,7 @@ const AddNewPageActionsContext = React.createContext<null|AddNewPageActionsConte
 type AddNewPageStateContext = {
     topicList: TopicResponseBody[];
     selectedTopic: TopicResponseBody;
-    tagList: Tag[]
+    tagList: SearchTagsResponse
     selectedTags: Tag[];
     selectedImage: File|null,
 }

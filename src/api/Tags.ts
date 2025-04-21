@@ -1,4 +1,5 @@
 import {api} from "@/api";
+import {AxiosError} from "axios";
 
 export type SearchTagsResponse = {
     hits: Tag[]
@@ -19,16 +20,17 @@ export type Tag = {
 }
 
 export const TagsApi = {
-    async searchTags(prompt?: string, count?: number): Promise<SearchTagsResponse[] | null> {
+    async searchTags(prompt?: string, count?: number): Promise<SearchTagsResponse | null> {
         try {
             const params: Record<string, string|number> = {};
             if (prompt) params.input = prompt;
             if (count) params.count = count;
 
-            const { data } = await api.get<SearchTagsResponse[]>(`/api/v1/tags/search`, { params });
+            const { data } = await api.get<SearchTagsResponse>(`/api/v1/tags/search`, { params });
             return data;
         } catch (err) {
-            if (err?.response?.status === 401) return null;
+            const error = err as AxiosError;
+            if (error?.response?.status === 401) return null;
             throw err; // або: return { error: true, message: err.message };
         }
     }

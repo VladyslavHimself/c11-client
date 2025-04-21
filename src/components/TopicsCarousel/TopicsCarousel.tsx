@@ -28,6 +28,7 @@ export default function TopicsCarousel({ topics }: Props) {
     }
 
 
+
     return (
         <div ref={carouselOuterRef} className={styles['topics-carousel']}>
             <div className={styles['topics-carousel-container']}>
@@ -35,6 +36,8 @@ export default function TopicsCarousel({ topics }: Props) {
                     drag="x"
                     dragConstraints={dragConstraints}
                     ref={carouselInnerRef}
+
+                    // @ts-expect-error while drag is not supported by the "motion.div" component.
                     whileDrag={() => { isCarouselDragging = true; }}
                     onDragEnd={() => { isCarouselDragging = false; }}
                     style={{display: "flex", alignItems: "center"}}>
