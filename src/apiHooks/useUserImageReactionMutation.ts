@@ -4,7 +4,7 @@ import {UserReactionToImage} from "@/api/Images";
 import {revalidateAllPathes} from "@/actions/pathesRevalidators";
 
 export function useUserImageReactionMutation() {
-    const [data, setData] = React.useState<any>(null);
+    const [data, setData] = React.useState(null);
     const [loading, setLoading] = React.useState(false);
     const [error, setError] = React.useState<string | null>(null);
 

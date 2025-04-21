@@ -1,5 +1,10 @@
 import React from "react";
-import useInput from "@/hooks/useInput";
+import useInput, {InputInnerProps} from "@/hooks/useInput";
+
+export type DebouncedInputReturnValues = {
+    debouncedInput: string;
+    sourceInput: InputInnerProps;
+}
 
 export default function useDebouncedInput(ms = 500) {
     const { inputInnerProps } = useInput('');

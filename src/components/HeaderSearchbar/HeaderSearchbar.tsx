@@ -11,13 +11,9 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 export const SEARCH_QUERY = "query";
 
-type Props = {
-    routePath?: string
-}
-
 const rerouteToSearchPageWith= (searchParam: string) => `/search/wallpapers?${SEARCH_QUERY}=${searchParam}`;
 
-export default function HeaderSearchbar({ routePath }: Props) {
+export default function HeaderSearchbar() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const searchInputDefaultValue = searchParams.get(SEARCH_QUERY) || ''

@@ -12,14 +12,14 @@ const AddNewPageActionsContext = React.createContext<null|AddNewPageActionsConte
 type AddNewPageStateContext = {
     topicList: TopicResponseBody[];
     selectedTopic: TopicResponseBody;
-    tagList: any[]
-    selectedTags: any[];
+    tagList: Tag[]
+    selectedTags: Tag[];
     selectedImage: File|null,
 }
 
 type AddNewPageActionsContext = {
     setSelectedTopic: React.Dispatch<React.SetStateAction<TopicResponseBody>>;
-    setSelectedTags: React.Dispatch<React.SetStateAction<any[]>>;
+    setSelectedTags: React.Dispatch<React.SetStateAction<Tag[]>>;
     setSelectedImage: React.Dispatch<React.SetStateAction<null|File>>;
     onSubmitNewWallpaper: () => void;
 }
@@ -28,13 +28,15 @@ type InheritedAddNewPageProps = AddNewPageProps;
 
 export default function AddNewPageProvider({ children, tagList, topicList }: PropsWithChildren<InheritedAddNewPageProps>) {
     const router = useRouter();
-    const [selectedImage, setSelectedImage] = React.useState<null|File>();
+    const [selectedImage, setSelectedImage] = React.useState<null|File>(null);
     const [selectedTopic, setSelectedTopic] = React.useState<TopicResponseBody>(topicList[0]);
     const [selectedTags, setSelectedTags] = React.useState<Tag[]>([]);
 
     const { addNewWallpaper } = useAddNewWallpaperMutation(() => {});
 
     function onSubmitNewWallpaper() {
+        if (!selectedImage) return;
+
         const formattedTags = selectedTags.map((tag) => tag.id ).join(',');
 
        addNewWallpaper(selectedImage, selectedTopic.id, formattedTags).then(() => {

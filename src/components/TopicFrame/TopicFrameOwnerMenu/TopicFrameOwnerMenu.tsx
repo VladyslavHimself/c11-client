@@ -1,5 +1,4 @@
 import styles from './topicFrameOwnerMenu.module.scss';
-import {TrashIcon} from "lucide-react";
 import {Button} from "@/components/ui/button";
 import {TopicResponseBody} from "@/api/Topics";
 import PhotoIcon from "../../../../public/PhotoIcon";

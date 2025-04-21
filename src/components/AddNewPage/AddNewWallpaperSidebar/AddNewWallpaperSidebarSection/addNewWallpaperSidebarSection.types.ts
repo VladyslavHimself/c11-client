@@ -1,4 +1,4 @@
-import {InputReturnValues} from "@/hooks/useInput";
+import {InputInnerProps} from "@/hooks/useInput";
 
 export type NativeProps<T> = {
     itemList: T[],
@@ -10,6 +10,6 @@ export type NativeProps<T> = {
 export interface AddNewWallpaperSidebarSectionTypes<T> extends NativeProps<T> {
     title: string;
     searchPlaceholder: string;
-    searchProperties: InputReturnValues
+    searchProperties: InputInnerProps,
     isCompact: boolean
 }

@@ -2,11 +2,11 @@
     width: 1100px;
     display: flex;
 
-    // TODO: Investigate how to make this easier
-    :global(.topic-frame) {
-        &:not(:first-child) {
-            margin-left: 25px;
-        }
+  > div {
+    &:not(:first-child) {
+      margin-left: 25px;
     }
+  }
+
 }
 

@@ -12,7 +12,7 @@ type Props = {
 export default function TopicFrame({ topic, children, onClick }: React.PropsWithChildren<Props>) {
     const { name, imgUrl } = topic;
     return (
-        <div className={'topic-frame'} onClick={() => isFunction(onClick) && onClick(topic)}>
+        <div className={styles['topic-frame']} onClick={() => isFunction(onClick) && onClick(topic)}>
             { children && (
                 <div className={styles['topic-frame-children-container-wrapper']}>
                     { children }

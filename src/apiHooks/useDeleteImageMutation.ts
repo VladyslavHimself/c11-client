@@ -5,7 +5,7 @@ import {revalidateAllPathes} from "@/actions/pathesRevalidators";
 const PROXY_ENDPOINT = '/api/delete-image'
 
 export function useDeleteImageMutation() {
-    const [data, setData] = React.useState<any>(null);
+    const [data, setData] = React.useState(null);
     const [loading, setLoading] = React.useState(false);
     const [error, setError] = React.useState<string | null>(null);
 

@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default function SubscriptionListItem({ subscription }: Props) {
-    const { images, name, surname, pictureURL } = subscription;
+    const { images, name, surname } = subscription;
 
     return (
         <div className={styles['subscription-list-item']}>

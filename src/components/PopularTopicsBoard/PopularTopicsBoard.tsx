@@ -24,11 +24,12 @@ export default function PopularTopicsBoard({ topics }: Props) {
 
     return (
         <div className={styles['popular-topics-board']}>
-            { topics.map((topic) => <TopicFrame
-                topic={topic}
-                key={topic.id}
-                onClick={onTopicRouteClickHandler}
-            />
+            { topics.map((topic) =>
+                        <TopicFrame
+                            topic={topic}
+                            key={topic.id}
+                            onClick={onTopicRouteClickHandler}
+                        />
             )}
         </div>
     );

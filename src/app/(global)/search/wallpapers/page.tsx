@@ -13,7 +13,7 @@ type Params = {
 
 export default async function SearchWallpapersPage({ searchParams }: Params) {
     const searchParam = await searchParams.query;
-    const foundImages = await ImagesAPI.searchImages(undefined, searchParam);
+    const foundImages = await ImagesAPI.searchImages(99, searchParam);
 
     console.log(foundImages);
 

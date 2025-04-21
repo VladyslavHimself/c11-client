@@ -5,7 +5,7 @@ import { revalidateAllPathes } from "@/actions/pathesRevalidators";
 const getProxyEndpoint = (topic: string) => `/api/search-topic?topic=${topic}`;
 
 export function useSearchTopicMutation() {
-    const [data, setData] = React.useState<any>([]);
+    const [data, setData] = React.useState([]);
     const [loading, setLoading] = React.useState(false);
     const [error, setError] = React.useState<string | null>(null);
 

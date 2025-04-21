@@ -1,7 +1,6 @@
 import React from "react";
 
-
-type InputInnerProps = {
+export type InputInnerProps = {
     value: string;
     onChange: ({target}: React.ChangeEvent<HTMLInputElement>) => void;
 }

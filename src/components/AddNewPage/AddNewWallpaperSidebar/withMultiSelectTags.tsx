@@ -14,7 +14,7 @@ import useTagsSelect from "@/components/AddNewPage/AddNewWallpaperSidebar/useTag
 
 
 // TODO: Change to tags data
-function withMultiselectTags(NativeComponent: React.ComponentType<AddNewWallpaperSidebarSectionTypes<any>>) {
+function withMultiselectTags(NativeComponent: React.ComponentType<AddNewWallpaperSidebarSectionTypes<Tag>>) {
     if (!isFunction(NativeComponent)) throw new Error("HOC must have a NativeComponent");
 
     return function TagsMultiselect() {
