@@ -10,12 +10,13 @@ type Props = {
 }
 
 export default function TopicFrameOwnerMenu({ topic }: Props) {
+    const countOfImagesInTopic = topic?.images
     return (
         <div className={styles['topic-frame-owner-menu']}>
-            <DeleteTopicButton topic={topic} />
+            { !countOfImagesInTopic ? <DeleteTopicButton topic={topic} /> : <div></div> }
             <Button>
                 <PhotoIcon />
-                { topic?.images || '0' }
+                {countOfImagesInTopic}
             </Button>
         </div>
     );

@@ -21,7 +21,8 @@ export type TopicResponseBody = {
     imgHeightList: number[]
     imgMimetype: string
     createdAt: string
-    updatedAt: string
+    updatedAt: string,
+    images: number,
     author: TopicAuthor
 }
 // TODO: Check similarities with UserData.
