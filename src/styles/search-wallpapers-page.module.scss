@@ -1,0 +1,7 @@
+@import "@/scss-services/page-layout.service";
+
+.search-wallpapers-page {
+  @include pageLayout('search-wallpapers-page-content-wrapper') {
+    
+  };
+}

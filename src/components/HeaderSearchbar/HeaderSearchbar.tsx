@@ -9,26 +9,23 @@ import React from "react";
 import useInput from "@/hooks/useInput";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export const SEARCH_QUERY = "search_query";
+export const SEARCH_QUERY = "query";
 
 type Props = {
     routePath?: string
 }
 
+const rerouteToSearchPageWith= (searchParam: string) => `/search/wallpapers?${SEARCH_QUERY}=${searchParam}`;
 
 export default function HeaderSearchbar({ routePath }: Props) {
+    const router = useRouter();
     const searchParams = useSearchParams();
     const searchInputDefaultValue = searchParams.get(SEARCH_QUERY) || ''
-    const router = useRouter();
+
     const { inputInnerProps } = useInput(searchInputDefaultValue);
 
-    // TODO: Make service functions
     function onSearchHandler() {
-        if (routePath) {
-            return router.push(routePath + `?${SEARCH_QUERY}=` + inputInnerProps.value);
-        }
-
-        return router.push(window.location.pathname + `?${SEARCH_QUERY}=${inputInnerProps.value}`);
+        return router.push(rerouteToSearchPageWith(inputInnerProps.value));
     }
 
     return (
