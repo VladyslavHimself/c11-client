@@ -1,4 +1,5 @@
 {
   "settingsPage": false,
-  "isGoogleAuthEnabled": false
+  "isGoogleAuthEnabled": false,
+  "isSubscriptionsPageEnabled": false
 }

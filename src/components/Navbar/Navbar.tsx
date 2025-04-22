@@ -34,13 +34,14 @@ const generateRoutes = () => [
         action: () => {},
         authenticatedOnly: true,
     },
-    {
-        title: "Subscriptions",
-        icon: StarsIcon,
-        link: "/subscriptions",
-        action: () => {},
-        authenticatedOnly: true,
-    },
+    // TODO: Temporarily disabled
+    // {
+    //     title: "Subscriptions",
+    //     icon: StarsIcon,
+    //     link: "/subscriptions",
+    //     action: () => {},
+    //     authenticatedOnly: true,
+    // },
 ]
 
 export default function Navbar({ isAuthenticated }: { isAuthenticated: boolean }) {
