@@ -4,7 +4,7 @@ import {authConfig} from "@/config/authConfig";
 
 // TODO: Make prefix with `api/v1`
 const api = axios.create({
-    baseURL: "http://localhost:8000",
+    baseURL: process.env.BACKEND_URL,
 })
 
 api.interceptors.request.use(async (config) => {
