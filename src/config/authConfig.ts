@@ -69,12 +69,13 @@ function isUserLoggedFirstTime(account: null | Account, user: User | AdapterUser
 async function refreshAccessToken(token: JWT) {
     try {
         const res = await axios.post(
-            'http://localhost:8000/api/v1/auth/refresh', {},
+            '/api/v1/auth/refresh', {},
             {
                 headers: {
                     Authorization: `Bearer ${token.refresh}`,
                 },
                 withCredentials: true,
+                baseURL: process.env.BACKEND_URL,
             }
         );
 
