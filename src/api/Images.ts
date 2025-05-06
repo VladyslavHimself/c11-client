@@ -53,8 +53,8 @@ export const ImagesAPI = {
         });
     },
 
-    searchImages(count: number, input: string): Promise<FoundImagesResponse> {
-        return api.get(`/api/v1/images/search?input=${input}`).then(({ data }: { data: WallpaperResponse[] }) => data).catch(err => {
+    searchImages(count?: number, input?: string): Promise<FoundImagesResponse> {
+        return api.get(`/api/v1/images/search`, { params: { input, count } }).then(({ data }: { data: WallpaperResponse[] }) => data).catch(err => {
             if (err.status === 401) return null;
             return err;
         });
