@@ -17,7 +17,7 @@ export default async function TopicPage(props: Props) {
     const params = await props.params;
     const { topicId } = params;
 
-    const foundWallpapers = await ImagesAPI.searchImages(50, topicId);
+    const foundWallpapers = await ImagesAPI.searchImages(200, `"${topicId}"`);
     const topicDetails = await TopicsAPI.getTopicById(topicId);
 
     return (
