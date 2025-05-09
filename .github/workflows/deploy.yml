@@ -42,7 +42,7 @@ jobs:
 
       - name: Pull and restart service via SSH
         run: |
-          ssh ${{ secrets.SSH_HOST }} << 'EOF'
+          ssh -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} << 'EOF'
           docker pull registry.dframe.cloud/c11-client:latest
           docker compose -f /root/c11-server/compose.yaml up -d
           EOF
